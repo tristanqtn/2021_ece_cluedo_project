@@ -7,12 +7,12 @@
 /**< CONSTRUCTEURS >**************************************************************************************/
 //constructeurs par défault
 Joueur::Joueur()
-       : m_nb_partie(0), m_nb_victoire(0), m_grade(""), m_pseudo(""), m_pt_enqueteur(NULL)
+       : m_nb_partie(0), m_nb_victoire(0), m_grade(""), m_pseudo(""), m_pt_enqueteur()
 {}
 
 //constructeur surchargé
-Joueur::Joueur(std::string _pseudo, int _nb_partie, int _nb_victoire, std::string _grade, Enqueteur * _pt_enqueteur)
-       : m_nb_partie(_nb_partie), m_nb_victoire(_nb_victoire), m_grade(_grade), m_pseudo(_pseudo), m_pt_enqueteur(_pt_enqueteur)
+Joueur::Joueur(std::string _pseudo, int _nb_partie, int _nb_victoire, std::string _grade)
+       : m_nb_partie(_nb_partie), m_nb_victoire(_nb_victoire), m_grade(_grade), m_pseudo(_pseudo)
 {}
 /*********************************************************************************************************/
 
@@ -118,3 +118,31 @@ void Joueur::lecture_sauvegarde()
     setGrade(grade);
 }
 /*********************************************************************************************************/
+
+void Joueur::add_card(Carte_alibi carte_ajouter)
+{
+    m_pt_enqueteur.recevoir_carte(carte_ajouter);
+}
+
+
+
+void Joueur::jouer_tour()
+{
+    int deplacement;
+    system("CLS");
+    std::cout << "C'est le tour de " << Joueur::getPseudo() << std::endl;
+    std::cout << "Le de roule";
+    sleep(1);
+    std::cout << ".";
+    sleep(1);
+    std::cout << ".";
+    sleep(1);
+    std::cout << ".";
+
+    deplacement = (rand()%6)+1;
+
+    std::cout << std::endl << "Le resultat est : " << deplacement << std::endl;
+    std::cout << std::endl;
+    Joueur::m_pt_enqueteur.afficher_ID();
+    system("pause");
+}

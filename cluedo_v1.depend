@@ -1,0 +1,90 @@
+# depslib dependency file v1.0
+1635526094 source:c:\users\trist\onedrive\bureau\cluedo_v1\main.cpp
+	"header_main.h"
+	"header_carte.h"
+	"header_joueur.h"
+	"header_partie.h"
+	"header_personnage.h"
+
+1635524127 source:c:\users\trist\onedrive\bureau\cluedo_v1\classe_carte_fonctions.cpp
+	"header_main.h"
+	"header_carte.h"
+	"header_joueur.h"
+	"header_partie.h"
+	"header_personnage.h"
+
+1635524024 c:\users\trist\onedrive\bureau\cluedo_v1\header_main.h
+	"header_main.h"
+	"header_carte.h"
+	"header_joueur.h"
+	"header_partie.h"
+	"header_personnage.h"
+
+1635526025 c:\users\trist\onedrive\bureau\cluedo_v1\header_carte.h
+	<stack>
+	<vector>
+	<string>
+	<cstdlib>
+	<fstream>
+	<iostream>
+	<algorithm>
+	<time.h>
+	<allegro.h>
+	<unistd.h>
+
+1635526145 c:\users\trist\onedrive\bureau\cluedo_v1\header_joueur.h
+	"header_personnage.h"
+
+1635526094 c:\users\trist\onedrive\bureau\cluedo_v1\header_partie.h
+	"header_carte.h"
+	"header_joueur.h"
+	"header_personnage.h"
+
+1635525171 c:\users\trist\onedrive\bureau\cluedo_v1\header_personnage.h
+	"header_carte.h"
+
+1635525207 source:c:\users\trist\onedrive\bureau\cluedo_v1\classe_enqueteur_fonctions.cpp
+	"header_main.h"
+	"header_carte.h"
+	"header_joueur.h"
+	"header_partie.h"
+	"header_personnage.h"
+
+1635527279 source:c:\users\trist\onedrive\bureau\cluedo_v1\classe_joueur_fonctions.cpp
+	"header_main.h"
+	"header_carte.h"
+	"header_joueur.h"
+	"header_partie.h"
+	"header_personnage.h"
+
+1635524176 source:c:\users\trist\onedrive\bureau\cluedo_v1\classe_meurtrier_fonctions.cpp
+	"header_main.h"
+	"header_carte.h"
+	"header_joueur.h"
+	"header_partie.h"
+	"header_personnage.h"
+
+1635527610 source:c:\users\trist\onedrive\bureau\cluedo_v1\classe_partie_fonctions.cpp
+	"header_main.h"
+	"header_carte.h"
+	"header_joueur.h"
+	"header_partie.h"
+	"header_personnage.h"
+
+1635368073 source:c:\users\trist\onedrive\bureau\cluedo_v1\fonctions_allegro.cpp
+	"header_main.h"
+	"header_carte.h"
+	"header_joueur.h"
+	"header_partie.h"
+	"header_personnage.h"
+
+1635368123 source:c:\users\trist\onedrive\bureau\cluedo_v1\initialisation.cpp
+	"header_main.h"
+	"header_carte.h"
+	"header_joueur.h"
+	"header_partie.h"
+	"header_personnage.h"
+
+1635515446 source:c:\users\trist\onedrive\bureau\cluedo_v1\menu.cpp
+	"header_main.h"
+

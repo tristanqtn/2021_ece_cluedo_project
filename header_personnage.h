@@ -55,6 +55,7 @@ class Enqueteur
         std::vector <Carte_alibi> get_main() const;
 
         Enqueteur * get_pointer();
+        void recevoir_carte(Carte_alibi nouvelle_carte);
 
 };
 /*********************************************************************************************************/

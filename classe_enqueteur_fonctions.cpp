@@ -55,3 +55,9 @@ void Enqueteur::afficher_ID() const
 /**< RENDU DU POINTEUR SUR ENQUETEUR >********************************************************************/
 Enqueteur * Enqueteur::get_pointer() { return this; }
 /*********************************************************************************************************/
+
+
+void Enqueteur::recevoir_carte(Carte_alibi nouvelle_carte)
+{
+    m_main.push_back(nouvelle_carte);
+}

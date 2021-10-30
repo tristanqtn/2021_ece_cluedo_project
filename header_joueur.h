@@ -20,12 +20,12 @@ class Joueur
         std::string m_grade;
         std::string m_pseudo;
 
-        Enqueteur * m_pt_enqueteur;
+        Enqueteur m_pt_enqueteur;
 
     public:
         //constructeurs and destructeur
         Joueur();
-        Joueur(std::string _pseudo, int _nb_partie, int _nb_victoire, std::string _garde,  Enqueteur * _pt_enqueteur);
+        Joueur(std::string _pseudo, int _nb_partie, int _nb_victoire, std::string _grade);
         ~Joueur();
 
         //methodes
@@ -43,6 +43,9 @@ class Joueur
         void setNbPartie(int nbPartie);
         void setNbVictoire(int nbVictoire);
         void setGrade(std::string grade);
+
+        void add_card(Carte_alibi carte_ajouter);
+        void jouer_tour();
 };
 ///
 /*********************************************************************************************************/

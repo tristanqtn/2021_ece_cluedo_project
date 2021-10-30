@@ -34,23 +34,5 @@ void Meurtrier::afficher_meurtrier() const
 /*********************************************************************************************************/
 
 
-/**< CREATION DU MEURTRIER >******************************************************************************/
-Meurtrier creer_meurtrier(std::vector <Carte_alibi>& deck_personnages, std::vector <Carte_alibi>& deck_lieux, std::vector <Carte_alibi>& deck_armes)
-{
-    //création de 3 entier aléatoires
-    int rand_1 = rand()%6;
-    int rand_2 = rand()%6;
-    int rand_3 = rand()%6;
 
-    //création d'un nouveau meurtrier en piochant alétoirement un alibi dans chaque pioche
-    Meurtrier murderer(deck_personnages[rand_1], deck_lieux[rand_2], deck_armes[rand_3]);
-
-    //suppression de la carte utlisée pour le meurtrier dans chaque pioche
-    deck_personnages.erase(deck_personnages.begin()+ rand_1);
-    deck_lieux.erase(deck_lieux.begin()+ rand_2);
-    deck_armes.erase(deck_armes.begin()+ rand_3);
-
-    return murderer; //rendu du meurtrier
-}
-/*********************************************************************************************************/
 

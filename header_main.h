@@ -21,12 +21,7 @@ void setupAllegro ();
 
 
 ///CREATION DE LA PARTIE
-std::vector <Carte_alibi> creer_deck_lieux();
-std::vector <Carte_alibi> creer_deck_armes();
-std::vector <Carte_alibi> creer_deck_personnage();
 
-
-Meurtrier creer_meurtrier(std::vector <Carte_alibi>& deck_personnages, std::vector <Carte_alibi>& deck_lieux, std::vector <Carte_alibi>& deck_armes);
 ///
 
 
