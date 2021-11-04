@@ -6,7 +6,6 @@
 
 /**< LIBRARIES >******************************************************************************************/
 ///LIBRAIRIES TO INCLUDE HERE
-#include <stack>
 #include <vector>
 #include <string>
 #include <cstdlib>
@@ -24,6 +23,8 @@
 class Carte_alibi
 {
     private :
+
+        ///variables privées
         bool m_personnage = false;
         bool m_lieu = false;
         bool m_arme = false;
@@ -31,16 +32,25 @@ class Carte_alibi
         std::string m_caracteristique;
 
     public :
-        Carte_alibi();
-        Carte_alibi(bool _personnage, bool _lieu, bool _arme, std::string _spec);
+
+        ///constructeurs
+        Carte_alibi(); //défaut
+        Carte_alibi(bool _personnage, bool _lieu, bool _arme, std::string _spec); //surchargé
+
+        ///destructeur
         ~Carte_alibi();
 
-        bool get_personnage() const;
+        ///methodes
+        //getters
         bool get_lieu() const;
         bool get_arme() const;
+        bool get_personnage() const;
+
         std::string get_caracteristique() const;
 
-        void afficher_carac() const;
+        //autre
+        void afficher_carac() const; //affichage des caractéristique d'une carte
+        bool verification_egalite(Carte_alibi hypothese); //verification égalité de 2 cartes
 };
 /*********************************************************************************************************/
 
