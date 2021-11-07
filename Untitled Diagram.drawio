@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-11-07T15:51:45.103Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36" etag="sZZQUb35rEC9PRp-N4-0" version="15.6.6" type="github">
+<mxfile host="app.diagrams.net" modified="2021-11-07T15:54:38.014Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36" etag="YIgsk34U9uTlOH2OjBca" version="15.6.6" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
     <mxGraphModel dx="3316" dy="2007" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -103,7 +103,7 @@
         <mxCell id="PIt_JBXJW5z3_zAivK2_-2" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="PIt_JBXJW5z3_zAivK2_-0" vertex="1">
           <mxGeometry y="170" width="270" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="PIt_JBXJW5z3_zAivK2_-4" value="+ contructeurs&lt;br&gt;+ destructeur&lt;br&gt;+ getters&lt;br&gt;+ setters&lt;br&gt;&lt;br&gt;+ afficher_pioche : void&amp;nbsp;&lt;br&gt;+ afficher_meurtrier : void&lt;br&gt;&lt;br&gt;+ creer_partie : void&lt;br&gt;+ parametrer : void&lt;br&gt;+ creer_joueurs : void&lt;br&gt;+ creer_IA : void&lt;br&gt;+ distribuer : void&lt;br&gt;+ lancer_partie : void&lt;br&gt;&lt;br&gt;+ sauvegarder : void&amp;nbsp;&amp;nbsp;&lt;br&gt;&lt;br&gt;- doublon_pseudo : bool&lt;br&gt;&lt;br&gt;- creer_deck_personnages : vecteur cartes alibi&lt;br&gt;- creer_deck_armes : vecteur cartes alibi&lt;br&gt;- creer_deck_lieux : vecteur cartes alibi&lt;br&gt;&lt;br&gt;- verification_hypothese : bool&lt;br&gt;- creer_meurtrier : Meurtrier" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="PIt_JBXJW5z3_zAivK2_-0" vertex="1">
+        <mxCell id="PIt_JBXJW5z3_zAivK2_-4" value="+ contructeurs&lt;br&gt;+ destructeur&lt;br&gt;+ getters&lt;br&gt;+ setters&lt;br&gt;&lt;br&gt;+ afficher_pioche() : void&amp;nbsp;&lt;br&gt;+ afficher_meurtrier()&amp;nbsp;: void&lt;br&gt;&lt;br&gt;+ creer_partie : void&lt;br&gt;+ parametrer : void&lt;br&gt;+ creer_joueurs : void&lt;br&gt;+ creer_IA : void&lt;br&gt;+ distribuer : void&lt;br&gt;+ lancer_partie : void&lt;br&gt;&lt;br&gt;+ sauvegarder : void&amp;nbsp;&amp;nbsp;&lt;br&gt;&lt;br&gt;- doublon_pseudo : bool&lt;br&gt;&lt;br&gt;- creer_deck_personnages : vecteur cartes alibi&lt;br&gt;- creer_deck_armes : vecteur cartes alibi&lt;br&gt;- creer_deck_lieux : vecteur cartes alibi&lt;br&gt;&lt;br&gt;- verification_hypothese : bool&lt;br&gt;- creer_meurtrier : Meurtrier" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="PIt_JBXJW5z3_zAivK2_-0" vertex="1">
           <mxGeometry y="180" width="270" height="360" as="geometry" />
         </mxCell>
         <mxCell id="PIt_JBXJW5z3_zAivK2_-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="PIt_JBXJW5z3_zAivK2_-4" target="UuS_XBHEKWuna7Vddd0V-15" edge="1">
@@ -272,6 +272,18 @@
         </mxCell>
         <mxCell id="WGiH_s_3LJfmbaLmgEYp-37" value="&lt;span style=&quot;font-family: &amp;quot;helvetica&amp;quot; ; font-size: 12px ; font-style: normal ; font-weight: 400 ; letter-spacing: normal ; text-align: center ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; background-color: rgb(248 , 249 , 250) ; display: inline ; float: none&quot;&gt;agit sur&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;fontColor=default;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="-320" y="430" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WGiH_s_3LJfmbaLmgEYp-38" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=default;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-740" y="-60" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="WGiH_s_3LJfmbaLmgEYp-39" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=default;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="220" y="370" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="WGiH_s_3LJfmbaLmgEYp-40" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=default;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-1010" y="70" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="WGiH_s_3LJfmbaLmgEYp-41" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=default;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="340" y="370" width="20" height="20" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
