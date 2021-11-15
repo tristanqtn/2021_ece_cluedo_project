@@ -14,9 +14,6 @@ class Case_plateau
 
     private :
 
-        ///variables privées
-        bool m_vide;
-
         bool m_occupee;
         bool m_chance;
         bool m_station;
@@ -33,16 +30,11 @@ class Case_plateau
 
     public :
 
-        ///constructeur
-        Case_plateau(); //defaut
-        Case_plateau(bool _occupee, bool _chance, bool _sortie_haut, bool _sortie_bas, bool _sortie_gauche, bool _sortie_droite, std::string _nom_station, std::vector <Carte_chance> _deck_chance, Joueur * _occupant); //surchargé
+        Case_plateau();
+        Case_plateau(bool _occupee, bool _chance, bool _sortie_haut, bool _sortie_bas, bool _sortie_gauche, bool _sortie_droite, std::string _nom_station, std::vector <Carte_chance> _deck_chance, Joueur * _occupant);
 
-        ///destructeur
         ~Case_plateau();
 
-        ///methodes
-        //getters
-        bool get_vide() const;
         bool get_occupee() const;
         bool get_chance() const;
         bool get_station() const;
@@ -50,11 +42,27 @@ class Case_plateau
         bool get_sortie_bas() const;
         bool get_sortie_gauche() const;
         bool get_sortie_droite() const;
+        std::string get_nom_station() const;
 
-        std::vector <Carte_chance> get_deck_chance() const;
+        void set_occupee(bool etat);
+        void set_chance(bool etat);
+        void set_station(bool etat);
+        void set_sortie_haut(bool etat);
+        void set_sortie_bas(bool etat);
+        void set_sortie_gauche(bool etat);
+        void set_sortie_droite(bool etat);
+        void set_occupant(Joueur * occupant);
+
+        void set_nom_station(std::string nom);
 
         Joueur * get_occupant() const;
+
+        void generer_carte();
+        void afficher_deck_chance();
 };
+
+
+
 /*********************************************************************************************************/
 
 

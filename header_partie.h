@@ -8,6 +8,7 @@
 #include "header_case.h"
 #include "header_carte.h"
 #include "header_joueur.h"
+#include "header_plateau.h"
 #include "header_meurtrier.h"
 /*********************************************************************************************************/
 
@@ -24,7 +25,10 @@ class Partie
         Meurtrier m_meurtrier;
 
         std::vector <Joueur> m_joueurs;
+        std::vector <IA> m_IA;
         std::vector <Carte_alibi> m_deck_cartes;
+
+        Plateau m_board;
 
         ///fonctions privées, seulement utile au sein de la classe
         std::vector <Carte_alibi> creer_deck_lieux();
@@ -42,7 +46,7 @@ class Partie
         bool tour_joueur(int i);
 
         //méthodes d'accusation ou d'hypothèses
-        void hypothese_finale(int i);
+        void hypothese_finale(int i, std::string nom_station);
         bool accusation_finale(int i);
 
 
@@ -51,7 +55,7 @@ class Partie
 
         ///constructeurs
         Partie(); //defaut
-        Partie(Meurtrier _meurtrier, std::vector <Carte_alibi> _deck_cartes, std::vector <Joueur> _joueurs); //surchargé
+        Partie(Meurtrier _meurtrier, std::vector <Carte_alibi> _deck_cartes, std::vector <Joueur> _joueurs, std::vector <IA> _IA, Plateau _board); //surchargé
 
         ///destructeur
         ~Partie();
@@ -62,7 +66,9 @@ class Partie
         int get_nb_joueurs() const;
         int get_nb_tot_joueur() const;
 
+        std::vector <IA> get_IA() const;
         std::vector <Joueur> get_joueurs() const;
+
         std::vector <Carte_alibi> get_pioche() const;
 
         Meurtrier get_meurtrier() const;

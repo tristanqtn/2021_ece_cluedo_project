@@ -1,4 +1,5 @@
 #include "header_chance.h"
+#include "header_case.h"
 
 /**< CONSTRUCTEUR >***************************************************************************************/
 Carte_chance::Carte_chance()
@@ -36,3 +37,20 @@ void Carte_chance::set_descritpion(std::string chaine) { m_description = chaine;
 
 void Carte_chance::set_valeur (int valeur) { m_valeur = valeur; }
 /*********************************************************************************************************/
+
+
+
+/**< AFFICHAGE DES CARACTERISTIQUES D'UNE CARTE CHANCE >**************************************************/
+void Carte_chance::afficher_carac()
+{
+    if(Carte_chance::get_bonus() == false)
+        std::cout << "Malus ";
+
+    else if(Carte_chance::get_bonus() == true)
+        std::cout << "Bonus ";
+
+    std::cout << ": " << Carte_chance::get_descritpion() << " valeur : " << Carte_chance::get_valeur() << std::endl;
+
+}
+/*********************************************************************************************************/
+

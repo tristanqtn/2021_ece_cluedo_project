@@ -7,11 +7,11 @@
 
 /**< CONSTRUCTEUR >***************************************************************************************/
 Partie::Partie()
-    : m_nb_IA(0), m_nb_joueur(0), m_meurtrier(), m_joueurs(), m_deck_cartes()
+    : m_nb_IA(0), m_nb_joueur(0), m_meurtrier(), m_joueurs(), m_IA(), m_deck_cartes(), m_board()
 {}
 
-Partie::Partie(Meurtrier _meurtrier, std::vector <Carte_alibi> _deck_cartes, std::vector <Joueur> _joueurs)
-    : m_nb_IA(0), m_nb_joueur(0), m_meurtrier (_meurtrier), m_joueurs(_joueurs), m_deck_cartes(_deck_cartes)
+Partie::Partie(Meurtrier _meurtrier, std::vector <Carte_alibi> _deck_cartes,  std::vector <Joueur> _joueurs, std::vector <IA> _IA, Plateau _board)
+    : m_nb_IA(0), m_nb_joueur(0), m_meurtrier (_meurtrier), m_joueurs(_joueurs), m_IA(_IA), m_deck_cartes(_deck_cartes), m_board(_board)
 {}
 /*********************************************************************************************************/
 
@@ -43,6 +43,7 @@ int Partie::get_nb_joueurs() const { return m_nb_joueur; }
 int Partie::get_nb_tot_joueur() const { return (m_nb_joueur+m_nb_IA); }
 
 std::vector <Joueur> Partie::get_joueurs() const { return m_joueurs; }
+std::vector <IA> Partie::get_IA() const { return m_IA; }
 std::vector <Carte_alibi> Partie::get_pioche() const{ return m_deck_cartes; }
 
 Meurtrier Partie::get_meurtrier() const { return m_meurtrier; }
@@ -185,11 +186,19 @@ void Partie::distribuer()
 
     for(size_t i=0; i<m_deck_cartes.size(); i++)
     {//parcours de la pioche
-        for(int j=0; j<Partie::get_nb_tot_joueur(); j++)
+        for(int j=0; j<Partie::get_nb_joueurs(); j++)
         {//parcours des joueurs
             if(i<m_deck_cartes.size())
             {//si l'index i est inférieur à la taille du vecteur de cartes
                 m_joueurs[j].recevoir_carte(m_deck_cartes[i]); //distribution
+                i++; //incrémentation
+            }
+        }
+        for(int j=0; j<Partie::get_nb_IA(); j++)
+        {//parcours des joueurs
+            if(i<m_deck_cartes.size())
+            {//si l'index i est inférieur à la taille du vecteur de cartes
+                m_IA[j].recevoir_carte(m_deck_cartes[i]); //distribution
                 i++; //incrémentation
             }
         }
@@ -213,8 +222,8 @@ void Partie::creer_IA()
     for(int i=0; i<Partie::get_nb_IA(); i++)
     {//pour le nombre d'IA demandée
         pseudo = nom + std::to_string(i); //génération du nom de l'IA en fonction de l'index
-        Joueur nouveau (pseudo, 0, 0, "novice", vide, true, false, true); //création de l'objet IA
-        m_joueurs.push_back(nouveau); //ajout de l'ia dans le vecteur de joueurs
+        IA nouveau(pseudo, vide, true);
+        m_IA.push_back(nouveau); //ajout de l'ia dans le vecteur de joueurs
     }
 }
 /*********************************************************************************************************/
@@ -223,6 +232,7 @@ void Partie::creer_IA()
 /**< CREATION DES NOUVEAU JOUEURS >***********************************************************************/
 void Partie::creer_joueurs()
 {
+    int coord_x, coord_y;
     std::string pseudo, pion;
     std::vector <Carte_alibi> vide;
     for(int i=0; i<get_nb_joueurs(); i++)
@@ -239,9 +249,38 @@ void Partie::creer_joueurs()
         }
         while(Partie::doublon_pseudo(pseudo) == false);
 
-        ///faire saisir du pion
+        if(i==0)
+        {//etoile
+            coord_x = 0;
+            coord_y = 0;
+        }
+        if(i==1)
+        {//
+            coord_x = 14;
+            coord_y = 7;
+        }
+        if(i==2)
+        {
+            coord_x = 0;
+            coord_y = 14;
+        }
+        if(i==3)
+        {
+            coord_x = 7;
+            coord_y = 7;
+        }
+        if(i==4)
+        {
+            coord_x = 14;
+            coord_y = 0;
+        }
+        if(i==5)
+        {
+            coord_x = 14;
+            coord_y = 14;
+        }
 
-        Joueur nouveau(pseudo, 0,0, "novice", vide, false, false, true); //création de l'objet joueur
+        Joueur nouveau (pseudo, 0,0, "novice", vide, false, false, true, coord_x, coord_y);
 
         m_joueurs.push_back(nouveau); //ajout dans le vecteur
 
@@ -383,7 +422,7 @@ Meurtrier Partie::creer_meurtrier(std::vector <Carte_alibi>& deck_personnages, s
 /**< REALISER UNE ACCUSATION AVEC VERIFICATION AUTOMATIQUE ET EXCLUSION DU JOUEUR >***********************/
 bool Partie::accusation_finale(int i)
 {
-    Meurtrier accusation = m_joueurs[i].formuler_hypothese();//recuperation de l(hypothese du joueur
+    Meurtrier accusation = m_joueurs[i].formuler_accusation();//recuperation de l(hypothese du joueur
     bool sortie = m_meurtrier.verification_victoire(accusation);//vecrification de l'hypothese et du meurtrier de la partie
 
     if(sortie == false)
@@ -402,14 +441,17 @@ bool Partie::accusation_finale(int i)
 
 
 /**< REALISER UNE HYPOTHESE ET VERIFICATION AVEC LE JOUEUR SUIVANT >**************************************/
-void Partie::hypothese_finale(int i)
+void Partie::hypothese_finale(int i, std::string nom_station)
 {
     int suivant;
-    Meurtrier hypothese = m_joueurs[i].formuler_hypothese();//recuperation de l'hypothèse du joueur
+    bool suivant_IA = false;
 
-    if(i == Partie::get_nb_tot_joueur()-1)
+    Meurtrier hypothese = m_joueurs[i].formuler_hypothese(nom_station);//recuperation de l'hypothèse du joueur
+
+    if(i == Partie::get_nb_joueurs()-1)
     {//si l'hypothèse est réalisée par le dernier joueur du vecteur
         suivant = 0;//le joueur suivant est le premier du vecteur
+        suivant_IA = true;
     }
     else
     {//sinon
@@ -417,10 +459,10 @@ void Partie::hypothese_finale(int i)
     }
 
     //test pour savoir si le joueur suivant possède une carte de l'hypothèse formuler
-    if(m_joueurs[suivant].get_IA() == false)
+    if(m_joueurs[suivant].get_IA() == false && suivant_IA == false)
         m_joueurs[suivant].validation_hypothese_joueur(m_joueurs[suivant].get_main(), hypothese);
-    else
-        m_joueurs[suivant].verification_hypothese_IA(m_joueurs[suivant].get_main(), hypothese);
+    else if(m_IA[suivant].get_IA() == true && suivant_IA == true)
+        m_IA[suivant].verification_hypothese_IA(m_IA[suivant].get_main(), hypothese);
 }
 /*********************************************************************************************************/
 
@@ -429,6 +471,7 @@ void Partie::hypothese_finale(int i)
 void Partie::tour_IA(int i)
 {
     int suivant;
+    bool suivant_IA = false;
 
     //création des différentes cartes alibi dans des pioches séparées
     std::vector <Carte_alibi> deck_lieux = Partie::creer_deck_lieux();
@@ -440,24 +483,26 @@ void Partie::tour_IA(int i)
 
     //affichage du tour de l'IA;
     system("CLS");
-    std::cout << "C'est le tour de " << m_joueurs[i].getPseudo() << std::endl;
-    std::cout << "L'" << m_joueurs[i].getPseudo() << " realise une hypothese : " << std::endl;
+    std::cout << "C'est le tour de " << m_IA[i].getPseudo() << std::endl;
+    std::cout << "L'" << m_IA[i].getPseudo() << " realise une hypothese : " << std::endl;
 
     hypothese_IA.afficher_meurtrier();//affichage de l'hypothese
 
-    if(i == Partie::get_nb_tot_joueur())
+    if(i == Partie::get_nb_IA()-1)
     {//si l'hypothèse est réalisée par le dernier joueur du vecteur
         suivant = 0;//le joueur suivant est le premier du vecteur
+        suivant_IA = false;
     }
     else
     {//sinon
         suivant = i+1;//stockage de l'index du joueur suivant
+        suivant_IA = true;
     }
 
-    if(m_joueurs[suivant].get_IA() == false)
+    if(m_IA[suivant].get_IA() == true && suivant_IA == true)
+        m_IA[suivant].verification_hypothese_IA(m_IA[suivant].get_main(), hypothese_IA);
+    else if(m_joueurs[suivant].get_IA() == false && suivant_IA == false)
         m_joueurs[suivant].validation_hypothese_joueur(m_joueurs[suivant].get_main(), hypothese_IA);
-    else
-        m_joueurs[suivant].verification_hypothese_IA(m_joueurs[suivant].get_main(), hypothese_IA);
 
 }
 /*********************************************************************************************************/
@@ -467,26 +512,32 @@ void Partie::tour_IA(int i)
 bool Partie::tour_joueur(int i)
 {
     bool sortie;
-    int deplacement = 0, choix = 0;
+    int deplacement = 0, choix = 0, retour_x = 0, retour_y = 0;
+
 
     if(m_joueurs[i].get_autorisation() == true)
     {//si le joueur à la droit de jouer
 
-        choix = m_joueurs[i].jouer_tour(&deplacement); //recuperation du choix d'action du joueur et de son déplacement
+        Case_plateau case_du_joueur = m_board.get_case_plateau(m_joueurs[i].get_pos_x(), m_joueurs[i].get_pos_y());
+
+        bool joueur_en_station = case_du_joueur.get_station();
+        std::string nom_station = case_du_joueur.get_nom_station();
+
+        choix = m_joueurs[i].jouer_tour(deplacement, joueur_en_station, nom_station); //recuperation du choix d'action du joueur et de son déplacement
 
         std::cout << std::endl;
 
         switch(choix)
         {
             case 1: //déplacement
-                {
-
-                }
+                m_board.deplacement(m_joueurs[i].get_pos_x(), m_joueurs[i].get_pos_y(), deplacement, retour_x, retour_y);
+                m_joueurs[i].set_pos_x(retour_x);
+                m_joueurs[i].set_pos_y(retour_y);
                 break;
 
 
             case 2: //hypothèse
-                Partie::hypothese_finale(i);
+                Partie::hypothese_finale(i, case_du_joueur.get_nom_station());
                 break;
 
             case 3: //réaliser une accusation
@@ -494,11 +545,8 @@ bool Partie::tour_joueur(int i)
                 break;
 
             case 4: //passer son tour
-                {
 
-                }
                 break;
-
         }
     }
     else
@@ -513,32 +561,59 @@ bool Partie::tour_joueur(int i)
 /**< BOUCLE DE JEU >**************************************************************************************/
 void Partie::lancer_partie ()
 {
-    int i;
+    int i=0, j=0;
     bool sortie = false;
+    bool bool_tour_IA = false;
+    bool une_foi = false;
 
     while(sortie == false)
     {//boucle de jeu
 
         //remise à 0 des variables spécifiques aux joueurs
         i=0;
-
+        j=0;
         while(i<Partie::get_nb_tot_joueur() && sortie == false)
         {//parcours du vecteur de joueurs et sortie à la fin du parcours ou en cas de victoire
 
             ///JOUEUR
-            if(m_joueurs[i].get_IA() == false)
+            if(m_joueurs[i].get_IA() == false && bool_tour_IA == false)
             {//si le joueur est une personne
                 sortie = tour_joueur(i);
             }
 
-            ///IA
-            else if(m_joueurs[i].get_IA() == true)
-            {//le joueur est un IA
-                tour_IA(i);
-            }
 
-            i++;
+
+            ///IA
+            if(Partie::get_nb_IA() != 0)
+            {
+                if(i==Partie::get_nb_joueurs()-1)
+                {
+                    j=0;
+                    bool_tour_IA = true;
+                    system("pause");
+                    if(une_foi == false)
+                    {
+                        i++;
+                        une_foi = true;
+                    }
+
+                }
+                if(m_IA[j].get_IA() == true && bool_tour_IA == true)
+                {//le joueur est un IA
+                    tour_IA(j);
+                }
+
+                if(j==Partie::get_nb_IA()-1)
+                {
+                    bool_tour_IA = false;
+                }
+                if(bool_tour_IA == true)
+                {
+                    j++;
+                }
+            }
             system("pause");
+            i++;
         }
     }
 }

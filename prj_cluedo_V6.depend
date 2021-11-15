@@ -100,11 +100,11 @@
 	"header_meurtrier.h"
 	"header_principal.h"
 
-1635874913 c:\users\trist\onedrive\documents\ece\ing2\informatique\projet\prj_cluedo_v6\header_case.h
+1636365740 c:\users\trist\onedrive\documents\ece\ing2\informatique\projet\prj_cluedo_v6\header_case.h
 	"header_joueur.h"
 	"header_chance.h"
 
-1635929323 c:\users\trist\onedrive\documents\ece\ing2\informatique\projet\prj_cluedo_v6\header_joueur.h
+1636538288 c:\users\trist\onedrive\documents\ece\ing2\informatique\projet\prj_cluedo_v6\header_joueur.h
 	"header_carte.h"
 	"header_meurtrier.h"
 
@@ -122,13 +122,14 @@
 1635868300 c:\users\trist\onedrive\documents\ece\ing2\informatique\projet\prj_cluedo_v6\header_meurtrier.h
 	"header_carte.h"
 
-1635875537 c:\users\trist\onedrive\documents\ece\ing2\informatique\projet\prj_cluedo_v6\header_chance.h
+1636129835 c:\users\trist\onedrive\documents\ece\ing2\informatique\projet\prj_cluedo_v6\header_chance.h
 	"header_carte.h"
 
-1635931299 c:\users\trist\onedrive\documents\ece\ing2\informatique\projet\prj_cluedo_v6\header_partie.h
+1636538482 c:\users\trist\onedrive\documents\ece\ing2\informatique\projet\prj_cluedo_v6\header_partie.h
 	"header_case.h"
 	"header_carte.h"
 	"header_joueur.h"
+	"header_plateau.h"
 	"header_meurtrier.h"
 
 1635869186 c:\users\trist\onedrive\documents\ece\ing2\informatique\projet\prj_cluedo_v6\header_principal.h
@@ -138,8 +139,9 @@
 	"header_partie.h"
 	"header_meurtrier.h"
 
-1635875512 source:c:\users\trist\onedrive\documents\ece\ing2\informatique\projet\prj_cluedo_v6\classe_chance.cpp
+1636130291 source:c:\users\trist\onedrive\documents\ece\ing2\informatique\projet\prj_cluedo_v6\classe_chance.cpp
 	"header_chance.h"
+	"header_case.h"
 
 1635872838 source:c:\users\trist\onedrive\documents\ece\ing2\informatique\projet\prj_cluedo_v6\classe_cluedo.cpp
 	"header_cluedo.h"
@@ -163,7 +165,7 @@
 	"header_meurtrier.h"
 	"header_principal.h"
 
-1635874616 source:c:\users\trist\onedrive\documents\ece\ing2\informatique\projet\prj_cluedo_v6\main.cpp
+1636359481 source:c:\users\trist\onedrive\documents\ece\ing2\informatique\projet\prj_cluedo_v6\main.cpp
 	"header_case.h"
 	"header_carte.h"
 	"header_cluedo.h"
@@ -172,7 +174,138 @@
 	"header_meurtrier.h"
 	"header_principal.h"
 
-1635929323 source:c:\users\trist\onedrive\documents\ece\ing2\informatique\projet\prj_cluedo_v6\classe_joueur.cpp
+1636536451 source:c:\users\trist\onedrive\documents\ece\ing2\informatique\projet\prj_cluedo_v6\classe_joueur.cpp
+	"header_case.h"
+	"header_carte.h"
+	"header_joueur.h"
+	"header_partie.h"
+	"header_meurtrier.h"
+	"header_principal.h"
+
+1636369007 source:c:\users\trist\onedrive\documents\ece\ing2\informatique\projet\prj_cluedo_v6\classe_partie.cpp
+	"header_case.h"
+	"header_carte.h"
+	"header_joueur.h"
+	"header_partie.h"
+	"header_meurtrier.h"
+	"header_principal.h"
+
+1636365742 source:c:\users\trist\onedrive\documents\ece\ing2\informatique\projet\prj_cluedo_v6\classe_case.cpp
+	"header_case.h"
+	"header_chance.h"
+
+1636369007 c:\users\trist\onedrive\documents\ece\ing2\informatique\projet\prj_cluedo_v6\header_plateau.h
+	"header_case.h"
+	"header_chance.h"
+
+1636370887 source:c:\users\trist\onedrive\documents\ece\ing2\informatique\projet\prj_cluedo_v6\class_plateau.cpp
+	"header_plateau.h"
+	"header_joueur.h"
+
+1636971187 source:c:\users\trist\onedrive\bureau\copie_travail\class_plateau.cpp
+	"header_plateau.h"
+	"header_joueur.h"
+
+1636369007 c:\users\trist\onedrive\bureau\copie_travail\header_plateau.h
+	"header_case.h"
+	"header_chance.h"
+
+1636365740 c:\users\trist\onedrive\bureau\copie_travail\header_case.h
+	"header_joueur.h"
+	"header_chance.h"
+
+1636971187 c:\users\trist\onedrive\bureau\copie_travail\header_joueur.h
+	"header_carte.h"
+	"header_meurtrier.h"
+
+1636910136 c:\users\trist\onedrive\bureau\copie_travail\header_carte.h
+	<vector>
+	<string>
+	<cstdlib>
+	<fstream>
+	<iostream>
+	<algorithm>
+	<memory>
+	<time.h>
+	<allegro.h>
+	<unistd.h>
+
+1635868300 c:\users\trist\onedrive\bureau\copie_travail\header_meurtrier.h
+	"header_carte.h"
+
+1636129835 c:\users\trist\onedrive\bureau\copie_travail\header_chance.h
+	"header_carte.h"
+
+1635870584 source:c:\users\trist\onedrive\bureau\copie_travail\classe_carte.cpp
+	"header_case.h"
+	"header_carte.h"
+	"header_joueur.h"
+	"header_partie.h"
+	"header_meurtrier.h"
+	"header_principal.h"
+
+1636968074 c:\users\trist\onedrive\bureau\copie_travail\header_partie.h
+	"header_case.h"
+	"header_carte.h"
+	"header_joueur.h"
+	"header_plateau.h"
+	"header_meurtrier.h"
+
+1635869186 c:\users\trist\onedrive\bureau\copie_travail\header_principal.h
+	"header_case.h"
+	"header_carte.h"
+	"header_joueur.h"
+	"header_partie.h"
+	"header_meurtrier.h"
+
+1636365742 source:c:\users\trist\onedrive\bureau\copie_travail\classe_case.cpp
+	"header_case.h"
+	"header_chance.h"
+
+1636130291 source:c:\users\trist\onedrive\bureau\copie_travail\classe_chance.cpp
+	"header_chance.h"
+	"header_case.h"
+
+1635872838 source:c:\users\trist\onedrive\bureau\copie_travail\classe_cluedo.cpp
+	"header_cluedo.h"
+
+1635872635 c:\users\trist\onedrive\bureau\copie_travail\header_cluedo.h
+	"header_partie.h"
+
+1635870450 source:c:\users\trist\onedrive\bureau\copie_travail\classe_meurtrier.cpp
+	"header_case.h"
+	"header_carte.h"
+	"header_joueur.h"
+	"header_partie.h"
+	"header_meurtrier.h"
+	"header_principal.h"
+
+1636971998 source:c:\users\trist\onedrive\bureau\copie_travail\classe_partie.cpp
+	"header_case.h"
+	"header_carte.h"
+	"header_joueur.h"
+	"header_partie.h"
+	"header_meurtrier.h"
+	"header_principal.h"
+
+1635870617 source:c:\users\trist\onedrive\bureau\copie_travail\fonction_allegro.cpp
+	"header_case.h"
+	"header_carte.h"
+	"header_joueur.h"
+	"header_partie.h"
+	"header_meurtrier.h"
+	"header_principal.h"
+
+1636359481 source:c:\users\trist\onedrive\bureau\copie_travail\main.cpp
+	"header_case.h"
+	"header_carte.h"
+	"header_cluedo.h"
+	"header_joueur.h"
+	"header_partie.h"
+	"header_meurtrier.h"
+	"header_principal.h"
+
+1636972181 source:c:\users\trist\onedrive\bureau\copie_travail\classe_joueur.cpp
 	"header_case.h"
 	"header_carte.h"
 	"header_joueur.h"

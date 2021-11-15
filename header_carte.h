@@ -12,6 +12,7 @@
 #include <fstream>
 #include <iostream>
 #include <algorithm>
+#include <memory>
 
 #include <time.h>
 #include <allegro.h>

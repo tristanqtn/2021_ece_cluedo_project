@@ -35,7 +35,9 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="class_plateau.cpp" />
 		<Unit filename="classe_carte.cpp" />
+		<Unit filename="classe_case.cpp" />
 		<Unit filename="classe_chance.cpp" />
 		<Unit filename="classe_cluedo.cpp" />
 		<Unit filename="classe_joueur.cpp" />
@@ -49,6 +51,7 @@
 		<Unit filename="header_joueur.h" />
 		<Unit filename="header_meurtrier.h" />
 		<Unit filename="header_partie.h" />
+		<Unit filename="header_plateau.h" />
 		<Unit filename="header_principal.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
