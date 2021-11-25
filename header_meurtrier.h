@@ -32,6 +32,8 @@ class Meurtrier
         ///methodes
         void afficher_meurtrier() const; //affichage des données du crime
 
+        void sauvegarde();
+
         bool verification_victoire(Meurtrier hypothese); //comparaison d'une hypthèse avec le crime
         bool verification_carte(Carte_alibi test); //verification egalite entre deux cartes
 

@@ -91,8 +91,9 @@ class Joueur : public Participant
 
         ///methodes
         //sauvegarde
-        void sauvegarde();
-        void lecture_sauvegarde();
+        void lecture_sauvegarde(std::string location);
+        void sauvegarde_joueur_in_game(std::ofstream& fichier);
+        void sauvegarde_joueur();
 
         //getters
         bool get_autorisation() const;
@@ -120,6 +121,7 @@ class Joueur : public Participant
         int jouer_tour(int& deplacement, bool joueur_en_station, std::string nom_station);
 
         //affichage
+        void afficher_main_allegro();
         void afficher_tour() const; //affichage spécifique pour le tour du joueur
         void afficher_le_joueur(); //affichage des données du joueur
 

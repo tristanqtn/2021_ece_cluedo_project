@@ -5,6 +5,7 @@
 #include "header_meurtrier.h"
 #include "header_principal.h"
 
+
 /**< CONSTRUCTEUR >***************************************************************************************/
 Partie::Partie()
     : m_nb_IA(0), m_nb_joueur(0), m_meurtrier(), m_joueurs(), m_IA(), m_deck_cartes(), m_board()
@@ -75,6 +76,8 @@ void Partie::creer_partie()
     std::vector <Carte_alibi> deck_final; //deck pour assemblage final des pioches
 
     Meurtrier meurtrier_tempo = Partie::creer_meurtrier(deck_personnages, deck_lieux, deck_armes);
+
+
 
     deck_final.insert(deck_final.end(), deck_armes.begin(), deck_armes.end()); //ajout de la pioche d'armes dans la pioche finale
     deck_final.insert(deck_final.end(), deck_lieux.begin(), deck_lieux.end()); //ajout de la pioche de lieux dans la pioche finale
@@ -229,60 +232,143 @@ void Partie::creer_IA()
 /*********************************************************************************************************/
 
 
+/**< RECUPERER UN PROFIL DE JOUEUR DEJA UTILISER >********************************************************/
+Joueur Partie::recuperation()
+{
+    std::vector <Carte_alibi> vide;
+    std::string nom_sauvegarde, fichier;
+    std::string const location = "data/saves/players/";
+
+    std::cout << std::endl << "****** RECUPERATION D'UN ANCIEN PROFIL ******" << std::endl << std::endl;
+    std::cout << "Voici la liste des profils de joueurs qui ont étés sauvegarder lors des partie precedentes : " << std::endl;
+    system("dir data\\saves\\players");
+    std::cout << std::endl << "Veuillez saisir le nom du profil que vous souhaitez recuperer (extension comprise) : " << std::endl;
+
+
+    std::cin >> nom_sauvegarde;
+    fichier = location+nom_sauvegarde;
+
+
+    std::string pseudo, grade;
+    int nbPartie, nbVictoire;
+
+    //ouverture du fichier en mode écriture sans supprimer ce qui est déjà écrit
+    std::ifstream f;
+    f.open(fichier);
+
+    //test si le fichier est bien ouvert
+    if(!f)
+        std::cout << "Impossible d'ouvrir le fichier" << std::endl;
+    else
+    {
+        //récupération des divers éléments de la sauvegarde
+        f >> pseudo;
+        f >> nbPartie;
+        f >> nbVictoire;
+        f >> grade;
+
+    }
+
+
+    Joueur nouveau (pseudo, nbPartie, nbVictoire, grade, vide, false, true, true, 0, 0);
+
+    f.close();
+    return nouveau;
+}
+/*********************************************************************************************************/
+
+
+
+
+
+
+void Partie::initialisation()
+{
+    int temp;
+
+    for(int i=0; i<Partie::get_nb_joueurs(); i++)
+    {
+        temp = m_joueurs[i].getNbPartie();
+        m_joueurs[i].setNbPartie(temp+1);
+    }
+}
+
+
 /**< CREATION DES NOUVEAU JOUEURS >***********************************************************************/
 void Partie::creer_joueurs()
 {
-    int coord_x, coord_y;
     std::string pseudo, pion;
     std::vector <Carte_alibi> vide;
-    for(int i=0; i<get_nb_joueurs(); i++)
+
+    for(int i=0; i<Partie::get_nb_joueurs(); i++)
     {//pour le nombre joueur demandés
         system("CLS");
 
-        std::cout << "****** NOUVEAU JOUEUR ******" << std::endl;
+        int ancien_profil = 0;
+
 
         do
-        {//saisie blindée du pseudo pour eviter les doublons
-            std::cout << "Pseudo : ";
-            std::cin >> pseudo;
+        {
+            std::cout << "****** JOUEURS DE LA PARTIE ******" << std::endl;
+            std::cout << "Voullez-vous recuperer un profil precedemment utlise ? [1 pour oui/0 pour non] : ";
+            std::cin >> ancien_profil;
+        }while(ancien_profil>1 || ancien_profil<0);
 
+
+
+        if(ancien_profil == 1)
+        {
+            m_joueurs.push_back(Partie::recuperation());
         }
-        while(Partie::doublon_pseudo(pseudo) == false);
+
+        else
+        {
+            do
+            {//saisie blindée du pseudo pour eviter les doublons
+                std::cout << std::endl <<"****** NOUVEAU JOUEUR ******" << std::endl;
+                std::cout << "Pseudo : ";
+                std::cin >> pseudo;
+
+            }
+            while(Partie::doublon_pseudo(pseudo) == false);
+
+            Joueur nouveau (pseudo, 0,0, "novice", vide, false, false, true, 0, 0);
+
+            m_joueurs.push_back(nouveau); //ajout dans le vecteur
+        }
+
+
 
         if(i==0)
         {//etoile
-            coord_x = 0;
-            coord_y = 0;
+            m_joueurs[i].set_pos_x(0);
+            m_joueurs[i].set_pos_y(0);
         }
         if(i==1)
         {//
-            coord_x = 14;
-            coord_y = 7;
+            m_joueurs[i].set_pos_x(14);
+            m_joueurs[i].set_pos_y(7);
         }
         if(i==2)
         {
-            coord_x = 0;
-            coord_y = 14;
+            m_joueurs[i].set_pos_x(0);
+            m_joueurs[i].set_pos_y(14);
         }
         if(i==3)
         {
-            coord_x = 7;
-            coord_y = 7;
+            m_joueurs[i].set_pos_x(7);
+            m_joueurs[i].set_pos_y(7);
         }
         if(i==4)
         {
-            coord_x = 14;
-            coord_y = 0;
+            m_joueurs[i].set_pos_x(14);
+            m_joueurs[i].set_pos_y(0);
         }
         if(i==5)
         {
-            coord_x = 14;
-            coord_y = 14;
+            m_joueurs[i].set_pos_x(14);
+            m_joueurs[i].set_pos_y(14);
         }
-
-        Joueur nouveau (pseudo, 0,0, "novice", vide, false, false, true, coord_x, coord_y);
-
-        m_joueurs.push_back(nouveau); //ajout dans le vecteur
 
         system("pause");
     }
@@ -323,14 +409,14 @@ std::vector <Carte_alibi> Partie::creer_deck_armes()
     Carte_alibi corde (false, false, true, "Ticket");
     Carte_alibi tourniquet (false, false, true, "Tourniquet");
 
-
-    //ajout des cartes dans le vecteur
+    //ajout des cartes dans le vecteur d'armes
     deck_armes.push_back(couteau);
     deck_armes.push_back(chandelier);
     deck_armes.push_back(clef);
     deck_armes.push_back(masse);
     deck_armes.push_back(corde);
     deck_armes.push_back(tourniquet);
+
 
     return deck_armes; //rendu du vecteur
 }
@@ -433,6 +519,9 @@ bool Partie::accusation_finale(int i)
 
     else
     {//accusation correcte
+        std::cout << "L'accusation est correcte, vous avez elucide le crime, votre victoire a ete sauvegardee" << std::endl;
+        int tempo = m_joueurs[i].getNbVictoire();
+        m_joueurs[i].setNbVictoire(tempo+1);
     }
 
     return sortie;
@@ -511,17 +600,23 @@ void Partie::tour_IA(int i)
 /**< TOUR D'UN JOUEUR >***********************************************************************************/
 bool Partie::tour_joueur(int i)
 {
-    bool sortie;
+    bool sortie = false;
     int deplacement = 0, choix = 0, retour_x = 0, retour_y = 0;
 
 
     if(m_joueurs[i].get_autorisation() == true)
     {//si le joueur à la droit de jouer
+        clear_bitmap(screen);
+        BITMAP * background = chargerImage("data/bitmap/plateau/background.bmp");
+        rectfill(screen, 0, 0, SCREEN_W, SCREEN_H, makecol(177, 177, 177));
+        stretch_blit(background, screen, 0, 0, background->w, background->h, 0, 0, SCREEN_W, 550);
 
         Case_plateau case_du_joueur = m_board.get_case_plateau(m_joueurs[i].get_pos_x(), m_joueurs[i].get_pos_y());
 
         bool joueur_en_station = case_du_joueur.get_station();
         std::string nom_station = case_du_joueur.get_nom_station();
+
+        m_joueurs[i].afficher_main_allegro();
 
         choix = m_joueurs[i].jouer_tour(deplacement, joueur_en_station, nom_station); //recuperation du choix d'action du joueur et de son déplacement
 
@@ -530,7 +625,7 @@ bool Partie::tour_joueur(int i)
         switch(choix)
         {
             case 1: //déplacement
-                m_board.deplacement(m_joueurs[i].get_pos_x(), m_joueurs[i].get_pos_y(), deplacement, retour_x, retour_y);
+                m_board.deplacement(m_joueurs[i].get_pos_x(), m_joueurs[i].get_pos_y(), deplacement, retour_x, retour_y, m_joueurs, i);
                 m_joueurs[i].set_pos_x(retour_x);
                 m_joueurs[i].set_pos_y(retour_y);
                 break;
@@ -548,6 +643,7 @@ bool Partie::tour_joueur(int i)
 
                 break;
         }
+        destroy_bitmap(background);
     }
     else
     {//le joueur est interdit de jouer, affichage d'un message
@@ -561,62 +657,276 @@ bool Partie::tour_joueur(int i)
 /**< BOUCLE DE JEU >**************************************************************************************/
 void Partie::lancer_partie ()
 {
-    int i=0, j=0;
+    //int rang_vainqueur;
     bool sortie = false;
-    bool bool_tour_IA = false;
-    bool une_foi = false;
 
     while(sortie == false)
     {//boucle de jeu
 
-        //remise à 0 des variables spécifiques aux joueurs
-        i=0;
-        j=0;
-        while(i<Partie::get_nb_tot_joueur() && sortie == false)
-        {//parcours du vecteur de joueurs et sortie à la fin du parcours ou en cas de victoire
+        for(int i=0; i<Partie::get_nb_tot_joueur(); i++)
+        {//parcours pour le nombre total de joueur
+           if(i<Partie::get_nb_joueurs())
+           {//si l'index i est un joueur
+             sortie = tour_joueur(i); //tour du joueur
 
-            ///JOUEUR
-            if(m_joueurs[i].get_IA() == false && bool_tour_IA == false)
-            {//si le joueur est une personne
-                sortie = tour_joueur(i);
-            }
+             if(sortie == true)
+             {
+                 //rang_vainqueur = i;
+                 i = 100;
+             }
 
-
-
-            ///IA
-            if(Partie::get_nb_IA() != 0)
-            {
-                if(i==Partie::get_nb_joueurs()-1)
-                {
-                    j=0;
-                    bool_tour_IA = true;
-                    system("pause");
-                    if(une_foi == false)
-                    {
-                        i++;
-                        une_foi = true;
-                    }
-
-                }
-                if(m_IA[j].get_IA() == true && bool_tour_IA == true)
-                {//le joueur est un IA
-                    tour_IA(j);
-                }
-
-                if(j==Partie::get_nb_IA()-1)
-                {
-                    bool_tour_IA = false;
-                }
-                if(bool_tour_IA == true)
-                {
-                    j++;
-                }
-            }
-            system("pause");
-            i++;
+           }
+           else if(i<Partie::get_nb_tot_joueur() && i>=Partie::get_nb_joueurs() && Partie::get_nb_IA() != 0)
+           {//si l'index i est une IA
+               int index = i-Partie::get_nb_joueurs(); //calcul de l'index de l'IA
+               tour_IA(index); //tour de l'IA
+           }
+           system("pause");
         }
     }
 }
 /*********************************************************************************************************/
 
 
+/**< SAUVEGARDE CONFIGURATION >***************************************************************************/
+void Partie::sauvegarde_config()
+{
+    //ouverture du fichier
+    std::ofstream fichier;
+    fichier.open("data/saves/game/config.txt");
+
+    if(fichier.is_open())
+    {//si fichier est ouvert
+        fichier << Partie::m_nb_joueur << "\t\t" << Partie::m_nb_IA; //sauvegarde des paramètres de parties
+        fichier.close();//fermeture du fichier
+    }
+}
+
+///
+
+void Partie::recup_config()
+{
+    int nb_joueurs, nb_IA;
+    std::ifstream fichier;
+
+    fichier.open("data/saves/game/config.txt");
+
+    if(fichier.is_open())
+    {
+        fichier >> nb_joueurs;
+        fichier >> nb_IA;
+        fichier.close();
+
+
+        Partie::set_nb_joueur(nb_joueurs);
+        Partie::set_nb_IA(nb_IA);
+    }
+}
+/*********************************************************************************************************/
+
+/**< SAUVEGARDE PARTIE >**********************************************************************************/
+void Partie::sauvegarde_partie()
+{
+    Partie::sauvegarde_config();
+    Partie::sauvegarder_joueurs();
+    Partie::sauvegarde_meurtrier();
+}
+
+///
+
+void Partie::recuperation_tot_partie()
+{
+    Partie::recup_config();
+    Partie::recuperation_joueurs();
+    Partie::recuperation_meurtrier();
+}
+/*********************************************************************************************************/
+
+
+/**< SAUVEGARDE MEURTRIER >*******************************************************************************/
+void Partie::recuperation_meurtrier()
+{
+    std::ifstream fichier;
+
+    fichier.open("data/saves/game/meurtrier.txt");
+
+    bool bool_arme_1, bool_lieu_1, bool_perso_1, bool_arme_2, bool_lieu_2, bool_perso_2, bool_arme_3, bool_lieu_3, bool_perso_3;
+    std::string spec_1, spec_2, spec_3;
+
+    if(fichier.is_open())
+    {
+        fichier >> bool_arme_1;
+        fichier >> bool_lieu_1;
+        fichier >> bool_perso_1;
+        fichier >> spec_1;
+
+        Carte_alibi arme (false, false, true, spec_1);
+
+        fichier >> bool_arme_2;
+        fichier >> bool_lieu_2;
+        fichier >> bool_perso_2;
+        fichier >> spec_2;
+
+        Carte_alibi lieu (false, true, false, spec_2);
+
+        fichier >> bool_arme_3;
+        fichier >> bool_lieu_3;
+        fichier >> bool_perso_3;
+        fichier >> spec_3;
+
+        Carte_alibi perso (true, false, false, spec_3);
+
+        Meurtrier builder (perso, arme, lieu);
+
+        m_meurtrier = builder;
+        fichier.close();
+    }
+}
+
+
+void Partie::sauvegarde_meurtrier()
+{
+    m_meurtrier.sauvegarde();
+}
+/*********************************************************************************************************/
+
+
+/**< SAUVEGARDE JOUEURS >*********************************************************************************/
+void Partie::recuperation_joueurs()
+{
+
+    std::string nom_sauvegarde, fichier;
+
+    std::string const location = "data/saves/game/joueur_in_game.txt";
+
+    std::string pseudo, grade, carac;
+    int nbPartie, autorisation, nbVictoire, pos_x, pos_y, nb_cartes, lieu, arme, personnage;
+
+    //ouverture du fichier en mode écriture sans supprimer ce qui est déjà écrit
+    std::ifstream f;
+    f.open(location);
+
+    //test si le fichier est bien ouvert
+    if(!f)
+        std::cout << "Impossible d'ouvrir le fichier" << std::endl;
+    else
+    {
+
+        for(int i=0; i<m_nb_joueur; i++)
+        {
+            std::vector <Carte_alibi> main_joueur;
+            //récupération des divers éléments de la sauvegarde
+            f >> pseudo;
+            f >> grade;
+            f >> nbPartie;
+            f >> nbVictoire;
+            f >> autorisation;
+            f >> pos_x;
+            f >> pos_y;
+
+            f >> nb_cartes;
+
+            for(int i=0; i<nb_cartes; i++)
+            {
+                f >> lieu;
+                f >> arme;
+                f >> personnage;
+                f >> carac;
+
+                main_joueur.push_back(Carte_alibi (personnage, lieu, arme, carac));
+            }
+
+            m_joueurs.push_back (Joueur (pseudo, nbPartie, nbVictoire, grade, main_joueur, false, false, autorisation, pos_x, pos_y));
+        }
+    f.close();
+    }
+}
+
+///
+
+void Partie::sauvegarder_joueurs()
+{
+    //test si le fichier est bien ouvert
+
+    std::ofstream save;
+
+    save.open("data/saves/game/joueur_in_game.txt");
+
+    if(save.is_open())
+    {
+        for(int i=0; i<Partie::get_nb_joueurs(); i++)
+        {
+            m_joueurs[i].sauvegarde_joueur_in_game(save);
+
+        }
+        save.close();
+    }
+}
+/*********************************************************************************************************/
+
+
+/**< SAUVEGARDE VICTOIRES >*******************************************************************************/
+void Partie::historique_victoire(int nb_sauv)
+{
+
+     std::string const location = "data/saves/victory/passed_victories.txt";
+     std::ifstream fichier;
+     std::string pseudo, personnage, lieu, arme;
+     int tour;
+
+     fichier.open(location, std::ifstream::in);
+
+     if(!fichier)
+     {
+        std::cout << "Impossible d'ouvrir le fichier" << std::endl;
+     }
+     else{
+        system("CLS");
+         for(int i=0; i<nb_sauv; i++)
+         {
+             fichier >> pseudo;
+             fichier >> personnage;
+             fichier >> lieu;
+             fichier >> arme;
+             fichier >> tour;
+
+             std::cout << "Le joueur : " << pseudo << " a gagne en " << tour << " tours en retrouvant le crime suivant : le " << personnage << "a tue a" << lieu << " avec " << arme << "\n";
+         }
+         fichier.close();
+     }
+}
+
+///
+
+int Partie::nombre_victoire()
+{
+     std::string const location = "data/saves/victory/victories_number.txt";
+     int nb_victoires = 0;
+     std::ifstream fichier;
+
+     fichier.open(location, std::ifstream::in);
+
+     if(!fichier)
+     {
+        std::cout << "Impossible d'ouvrir le fichier" << std::endl;
+     }
+     else{
+        fichier >> nb_victoires;
+
+        fichier.close();
+     }
+     return(nb_victoires);
+}
+
+///
+
+void Partie::sauvegarde_victoire(std::string pseudo, std::string personnage, std::string lieu, std::string arme, int tour)
+{
+    std::string const location = "data/saves/victory/passed_victories.txt";
+    std::ofstream fichier;
+
+    fichier.open(location, std::ofstream::app);
+    fichier << pseudo << "\t\t" << personnage << "\t\t" << lieu << "\t\t" << arme << "\t\t" << tour << "\n";
+    fichier.close();
+}
+/*********************************************************************************************************/

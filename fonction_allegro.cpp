@@ -1,10 +1,4 @@
-#include "header_case.h"
-#include "header_carte.h"
-#include "header_joueur.h"
-#include "header_partie.h"
-#include "header_meurtrier.h"
 #include "header_principal.h"
-
 
 /**< SETUP ALLEGRO >**************************************************************************************/
 void setupAllegro ()
@@ -16,7 +10,7 @@ void setupAllegro ()
 
     set_color_depth(desktop_color_depth());                                 //palette de couleur
 
-    if((set_gfx_mode(GFX_AUTODETECT_WINDOWED, 800, 600, 0, 0))!=0)        //paramètres fenêtre
+    if((set_gfx_mode(GFX_AUTODETECT_WINDOWED, 1280, 720, 0, 0))!=0)        //paramètres fenêtre
     {
         //problème avec fenêtre allegro
         allegro_exit();
@@ -164,6 +158,36 @@ void sortieErreur (const char * phrase)
 }
 /*********************************************************************************************************/
 
+void gotoligcol( int lig, int col )
+{
+// ressources
+COORD mycoord;
+
+mycoord.X = col;
+mycoord.Y = lig;
+SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), mycoord );
+}
+
+
+void clear_prompt(int x, int y)
+{
+    Color(0, 0);
+    for(int i=0; i<y; i++)
+    {
+        for(int j=0; j<x; j++)
+        {
+            std::cout << " ";
+        }
+        std::cout << std::endl;
+    }
+    Color(7, 0);
+}
+
+void Color(int couleurDuTexte,int couleurDeFond) // fonction d'affichage de couleurs
+{
+    HANDLE H=GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(H,couleurDeFond*16+couleurDuTexte);
+}
 
 /*********************************************************************************************************/
 //Affichage des coordonées du curseur sur l'écran (uniquement utile pour le dev)

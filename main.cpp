@@ -10,7 +10,7 @@
 int main()
 {
     srand(time(NULL));
-
+    setupAllegro();
     Cluedo jeu;
 
     jeu.lancer_jeu();

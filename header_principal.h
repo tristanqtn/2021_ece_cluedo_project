@@ -7,6 +7,9 @@
 /**< LIBRARIES >******************************************************************************************/
 #include "header_case.h"
 #include "header_carte.h"
+#include "header_chance.h"
+#include "header_cluedo.h"
+#include "header_plateau.h"
 #include "header_joueur.h"
 #include "header_partie.h"
 #include "header_meurtrier.h"
@@ -21,15 +24,10 @@ void setupAllegro ();
 
 
 ///CREATION DE LA PARTIE
-
+void gotoligcol( int lig, int col );
+void Color(int couleurDuTexte,int couleurDeFond);
+void clear_prompt(int x, int y);
 ///
-
-
-///MENU
-int menu_principal();
-///
-
-
 ///MES FONCTIONS
 FONT * chargerPolice(const char * filename);
 

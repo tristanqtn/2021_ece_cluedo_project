@@ -45,7 +45,7 @@ int Cluedo::menu_principal()
         std::cout << "\t\t* 4- Sortie                    *" << std::endl;
         std::cout << "\t\t********************************" << std::endl << std::endl;
 
-        std::cout << "\t\t\t Choice : ";
+        std::cout << "\t\t\t Choix : ";
 
         //saisie
         std::cin>>choix_utilisateur;
@@ -68,20 +68,36 @@ void Cluedo::lancer_jeu()
 
         if(choix == 1)
         {//nouvelle partie
+            try
+            {
+
+
             m_partie.creer_partie();
             m_partie.parametrer();
             m_partie.creer_joueurs();
             m_partie.creer_IA();
             m_partie.distribuer();
+            m_partie.initialisation();
+            m_partie.sauvegarde_partie();
             m_partie.lancer_partie();
 
+            }
+            catch (const std::exception& e){
+                std::cerr << "Err : " << e.what() << std::endl;
+            }
         }
         else if(choix == 2)
         {//sauvegardé
-
+            m_partie.recuperation_tot_partie();
+            m_partie.creer_IA();
+            m_partie.sauvegarde_partie();
+            m_partie.lancer_partie();
         }
         else if(choix == 3)
         {//historique de victoires
+            int nb_victoires = m_partie.nombre_victoire();
+            m_partie.historique_victoire(nb_victoires);
+            system("pause");
 
         }
 

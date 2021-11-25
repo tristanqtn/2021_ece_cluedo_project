@@ -6,6 +6,8 @@
 
 /**< LIBRARIES >******************************************************************************************/
 ///LIBRAIRIES TO INCLUDE HERE
+#include <allegro.h>
+#include <winalleg.h>
 #include <vector>
 #include <string>
 #include <cstdlib>
@@ -14,9 +16,12 @@
 #include <algorithm>
 #include <memory>
 
+
+#include <conio.h>
 #include <time.h>
-#include <allegro.h>
+
 #include <unistd.h>
+#include <ctype.h>
 /*********************************************************************************************************/
 
 
@@ -46,7 +51,7 @@ class Carte_alibi
         bool get_lieu() const;
         bool get_arme() const;
         bool get_personnage() const;
-
+        BITMAP * get_illustration() const;
         std::string get_caracteristique() const;
 
         //autre

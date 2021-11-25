@@ -50,7 +50,7 @@ Meurtrier Participant::formuler_hypothese(std::string nom_station)
         std::cin >> personnage;
     }while(Participant::verification_hypothese_perso(personnage) != true);
 
-    std::cout << "\t Lieu : " << nom_station;
+    std::cout << "\n\t Lieu : " << nom_station;
 
 
     do
@@ -201,7 +201,7 @@ void Participant::verification_hypothese_IA(std::vector <Carte_alibi> main_joueu
 /**< CONSTRUCTEURS >**************************************************************************************/
 //constructeurs par défault
 Joueur::Joueur()
-       : Participant(), m_nb_partie(0), m_nb_victoire(0), m_grade(""), m_dans_une_piece(false), m_autorisation_jeu(true), m_pos_x(0), m_pos_y(0)
+       : Participant(), m_nb_partie(0), m_nb_victoire(0), m_grade(""), m_dans_une_piece(true), m_autorisation_jeu(true), m_pos_x(0), m_pos_y(0)
 {}
 
 //constructeur surchargé
@@ -318,7 +318,7 @@ int Joueur::jouer_tour(int& deplacement, bool joueur_en_station, std::string nom
     sleep(1);
     std::cout << ".";
 
-    deplacement = (rand()%6)+1;
+    deplacement = (rand()%12)+1;
 
     std::cout << "\tle resultat est : " << deplacement << std::endl;
     std::cout << std::endl;
@@ -345,14 +345,14 @@ int Joueur::jouer_tour(int& deplacement, bool joueur_en_station, std::string nom
         std::cout << std::endl;
         std::cout << "Actions possibles : " << std::endl;
         std::cout << "\t 1- Se deplacer" << std::endl;
-        std::cout << "\t 2- Formuler une accusation" << std::endl;
-        std::cout << "\t 3- Passer le tour" << std::endl;
+        std::cout << "\t 3- Formuler une accusation" << std::endl;
+        std::cout << "\t 4- Passer le tour" << std::endl;
 
         do
         {//saisie blindée de choix de l'utilisateur
             std::cout << std::endl <<"\t Choix : ";
             std::cin >> choix;
-        }while(choix<1 || choix>3);
+        }while(choix<1 || choix>4 || choix == 2);
     }
 
 
@@ -363,7 +363,7 @@ int Joueur::jouer_tour(int& deplacement, bool joueur_en_station, std::string nom
 
 
 /**< SAUVEGARDE DONNEES DU JOUEUR >***********************************************************************/
-void Joueur::sauvegarde()
+void Joueur::sauvegarde_joueur()
 {
     //réception des données à enregistrer
     std::string pseudo = getPseudo();
@@ -372,50 +372,29 @@ void Joueur::sauvegarde()
     std::string grade = getGrade();
 
     //Definition du fichier à rechercher
-    std::string const fichier("sauvegarde joueur.txt");
+    std::string const adresse("data/saves/players/");
+    std::string const extension(".txt");
+    std::string fichier;
+
+    fichier = adresse + pseudo + extension;
 
     //ouverture du fichier en mode écriture sans supprimer ce qui est déjà écrit
-    std::ofstream f(fichier.c_str(), std::ios::app);
+    std::ofstream f;
+    f.open(fichier);
 
     //test si le fichier est bien ouvert
     if(!f)
         std::cout << "Impossible d'ouvrir le fichier" << std::endl;
     else
     {
-        f << nbPartie << "\t\t" << nbVictoire << "\t\t" << pseudo << "\t\t" << grade << std::endl;
+        f << pseudo << "\t\t" << nbPartie << "\t\t" << nbVictoire << "\t\t" << "\t\t" << grade << std::endl;
     }
+    f.close();
 }
 /*********************************************************************************************************/
 
 
 /**< RECUPERATION DES DONNEES D'UN JOUEUR SAUVEGARDE >****************************************************/
-void Joueur::lecture_sauvegarde()
-{
-    std::string pseudo, grade;
-    int nbPartie, nbVictoire;
-
-    //Definition du fichier à rechercher
-    std::string const fichier("sauvegarde joueur.txt");
-
-    //ouverture du fichier en mode écriture sans supprimer ce qui est déjà écrit
-    std::ifstream f(fichier);
-
-    //test si le fichier est bien ouvert
-    if(!f)
-        std::cout << "Impossible d'ouvrir le fichier" << std::endl;
-    else
-    {
-        //récupération des divers éléments de la sauvegarde
-        f >> nbPartie;
-        f >> nbVictoire;
-        f >> pseudo;
-        f >> grade;
-    }
-    setNbPartie(nbPartie);
-    setNbVictoire(nbVictoire);
-    setPseudo(pseudo);
-    setGrade(grade);
-}
 /*********************************************************************************************************/
 
 
@@ -497,6 +476,69 @@ Meurtrier Joueur::formuler_accusation()
 
 
 
+
+void Joueur::sauvegarde_joueur_in_game(std::ofstream& fichier)
+{
+
+    if(fichier.is_open())
+    {
+        fichier << Joueur::getPseudo() << "\t\t" << Joueur::getGrade() << "\t\t" << Joueur::getNbPartie() << "\t\t" << Joueur::getNbVictoire() << "\t\t" << Joueur::get_autorisation() << "\t\t" << Joueur::get_pos_x() << "\t\t" << Joueur::get_pos_y() << "\t\t" << m_main.size() << "\t\t";
+
+        for(size_t i=0; i<Joueur::m_main.size(); i++)
+        {
+            fichier << Joueur::m_main[i].get_lieu() << "\t\t" << Joueur::m_main[i].get_arme() << "\t\t" << Joueur::m_main[i].get_personnage() << "\t\t" << Joueur::m_main[i].get_caracteristique() << "\t\t";
+        }
+        fichier << "\n";
+    }
+}
+
+
+
+void Joueur::afficher_main_allegro()
+{
+    std::vector<BITMAP *> main_joueur;
+    BITMAP * image_tempo;
+    std::string racine = "data/bitmap/cartes/", extension = ".bmp", temp, location;
+    BITMAP * buffer = creerBuffer(SCREEN_W, SCREEN_H, "buffer");
+
+    rectfill(buffer, 0, 0, SCREEN_W, SCREEN_H, makecol(255, 0, 255));
+
+    for(size_t i=0; i<m_main.size(); i++)
+    {
+        temp = m_main[i].get_caracteristique();
+        if(m_main[i].get_lieu() != true)
+        {
+
+
+        for(size_t j=0; j<temp.size(); j++)
+        {
+            temp[j]=tolower(temp[j]);
+        }
+
+
+
+        location = racine + temp;
+        location = location + extension;
+
+        const char * lieu = location.c_str();
+
+        image_tempo = chargerImage(lieu);
+
+
+        main_joueur.push_back(image_tempo);
+        for(size_t j=0; j<main_joueur.size(); j++)
+        stretch_sprite(buffer, main_joueur[j], 10+j*200, 550, main_joueur[j]->w/2, main_joueur[j]->h/2);
+        stretch_sprite(screen, buffer, 0, 0, SCREEN_W, SCREEN_H);
+        }
+
+    }
+    for(size_t i=0; i<m_main.size(); i++)
+    {
+        main_joueur.pop_back();
+    }
+    destroy_bitmap(buffer);
+
+}
 
 
 

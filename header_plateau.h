@@ -25,10 +25,11 @@ class Plateau
         ~Plateau();
 
         //methode
-        void deplacement_elementaire(Case_plateau case_initial, Case_plateau case_d_arrivee, Joueur * joueur);
-        void deplacement(int x, int y, int de, int & rendu_x, int & rendu_y);
+        void deplacement_elementaire(Case_plateau case_initial, Case_plateau case_d_arrivee, Joueur * joueur, bool& is_station, bool& autor, std::vector<Joueur>vecteur_joueur, int dx, int dy, int p);
+        void deplacement(int x, int y, int de, int & rendu_x, int & rendu_y, std::vector<Joueur>vecteur_joueur, int p);
         //void ajouter_joueur(Case_plateau case_plateau, Joueur * joueur); //ajouter le joueur dans la case
         //void supprimer_joueur(Case_plateau case_plateau); //supprimer le joueur d'une case
+        void affichage_plateau(std::vector<Joueur>vecteur_joueur, int x, int y);
 
         //getter et setter
         Case_plateau get_case_plateau(int i, int j) const;     //getter d'une case

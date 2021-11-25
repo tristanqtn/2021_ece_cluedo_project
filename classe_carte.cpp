@@ -55,6 +55,7 @@ void Carte_alibi::afficher_carac() const
 /*********************************************************************************************************/
 
 
+/**< VERIFICATION EGALITE DE 2 CARTES >*******************************************************************/
 bool Carte_alibi::verification_egalite(Carte_alibi hypothese)
 {
     if(hypothese.get_caracteristique() == Carte_alibi::get_caracteristique())
@@ -64,4 +65,4 @@ bool Carte_alibi::verification_egalite(Carte_alibi hypothese)
     else //sinon
         return false; // on rend faux
 }
-
+/*********************************************************************************************************/

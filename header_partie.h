@@ -49,6 +49,15 @@ class Partie
         void hypothese_finale(int i, std::string nom_station);
         bool accusation_finale(int i);
 
+         void sauvegarder_joueurs();
+        void recuperation_joueur();
+        void sauvegarde_meurtrier();
+
+        void sauvegarde_config();
+        void recup_config();
+        void recuperation_joueurs();
+        void recuperation_meurtrier();
+        Joueur recuperation();
 
 
     public :
@@ -94,7 +103,12 @@ class Partie
         void distribuer(); //distribution des cartes
         void lancer_partie (); //boucle de jeu
 
-
+        void sauvegarde_partie();
+        void initialisation();
+        void recuperation_tot_partie();
+        void historique_victoire(int nb_sauv);
+        void sauvegarde_victoire(std::string pseudo, std::string personnage, std::string lieu, std::string arme, int tour);
+        int nombre_victoire();
 
 };
 /*********************************************************************************************************/
