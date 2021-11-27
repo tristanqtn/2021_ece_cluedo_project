@@ -202,14 +202,14 @@
 	"header_plateau.h"
 	"header_joueur.h"
 
-1638008884 source:c:\users\trist\onedrive\bureau\copie_travail\class_plateau.cpp
+1638035176 source:c:\users\trist\onedrive\bureau\copie_travail\class_plateau.cpp
 	"header_plateau.h"
 	"header_joueur.h"
 	"header_carte.h"
 	"header_chance.h"
 	"header_principal.h"
 
-1637968085 c:\users\trist\onedrive\bureau\copie_travail\header_plateau.h
+1638031160 c:\users\trist\onedrive\bureau\copie_travail\header_plateau.h
 	"header_case.h"
 	"header_chance.h"
 
@@ -217,7 +217,7 @@
 	"header_joueur.h"
 	"header_chance.h"
 
-1638011601 c:\users\trist\onedrive\bureau\copie_travail\header_joueur.h
+1638011629 c:\users\trist\onedrive\bureau\copie_travail\header_joueur.h
 	"header_carte.h"
 	"header_meurtrier.h"
 
@@ -242,7 +242,7 @@
 1636129835 c:\users\trist\onedrive\bureau\copie_travail\header_chance.h
 	"header_carte.h"
 
-1638009097 source:c:\users\trist\onedrive\bureau\copie_travail\classe_carte.cpp
+1638020490 source:c:\users\trist\onedrive\bureau\copie_travail\classe_carte.cpp
 	"header_case.h"
 	"header_carte.h"
 	"header_joueur.h"
@@ -250,14 +250,14 @@
 	"header_meurtrier.h"
 	"header_principal.h"
 
-1637974260 c:\users\trist\onedrive\bureau\copie_travail\header_partie.h
+1638033766 c:\users\trist\onedrive\bureau\copie_travail\header_partie.h
 	"header_case.h"
 	"header_carte.h"
 	"header_joueur.h"
 	"header_plateau.h"
 	"header_meurtrier.h"
 
-1637853254 c:\users\trist\onedrive\bureau\copie_travail\header_principal.h
+1638017867 c:\users\trist\onedrive\bureau\copie_travail\header_principal.h
 	"header_case.h"
 	"header_carte.h"
 	"header_chance.h"
@@ -275,7 +275,7 @@
 	"header_chance.h"
 	"header_case.h"
 
-1637973676 source:c:\users\trist\onedrive\bureau\copie_travail\classe_cluedo.cpp
+1638011601 source:c:\users\trist\onedrive\bureau\copie_travail\classe_cluedo.cpp
 	"header_cluedo.h"
 	"header_principal.h"
 
@@ -290,7 +290,7 @@
 	"header_meurtrier.h"
 	"header_principal.h"
 
-1638011465 source:c:\users\trist\onedrive\bureau\copie_travail\classe_partie.cpp
+1638034238 source:c:\users\trist\onedrive\bureau\copie_travail\classe_partie.cpp
 	"header_case.h"
 	"header_carte.h"
 	"header_joueur.h"
@@ -310,7 +310,7 @@
 	"header_meurtrier.h"
 	"header_principal.h"
 
-1638010240 source:c:\users\trist\onedrive\bureau\copie_travail\classe_joueur.cpp
+1638032098 source:c:\users\trist\onedrive\bureau\copie_travail\classe_joueur.cpp
 	"header_case.h"
 	"header_carte.h"
 	"header_joueur.h"

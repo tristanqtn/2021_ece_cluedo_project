@@ -35,6 +35,8 @@ class Plateau
         Case_plateau get_case_plateau(int i, int j) const;     //getter d'une case
         //void set_plateau(Case_plateau _plateau[15][15]);
         bool verif_presence_joueur(int i, int j, std::vector < Joueur> vecteur_joueurs);
+        void affichage_joueur_allegro(std::vector<Joueur>vecteur_joueur, BITMAP*& buffer);
+        void conversion_coord(int x_console, int y_console, int& x_allegro, int& y_allegro);
 };
 /************************************************************************/
 

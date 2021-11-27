@@ -43,3 +43,18 @@ Cours C/C++/Allegro : Mr Fercocq : https://fercoq.bitbucket.io/cpp/index.html
 Site reference Allegro 4-5 : https://www.allegro.cc/manual/5/
 Site reference C++ : https://www.cplusplus.com/
 __________________________________________________________________________________________________________________________
+
+
+
+_________________________________________________________________________________________________________________________
+
+A l'attention des professeurs : 
+
+Certains des sous programmes utilisés pour les affichages ALLEGRO sont issus du projet de l'année dernier : SABOTEUR, réalisé avec Apolline PETIT
+D'un accord commun nous nous sommes autorisé d'utiliser ces programmes.
+Ils ne sont en aucun cas le résultat d'un plagiat entre nos 2 groupes.
+
+Voici la liste de ces sous programmes : BITMAP * chargerImage(const char * filename) / BITMAP * creerBuffer(int largeur, int hauteur, const char * filename) / void afficherCoord() / void sortieErreur(const char * phrase)
+
+_________________________________________________________________________________________________________________________
+

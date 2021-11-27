@@ -1,0 +1,5 @@
+rikou		Controleur		Barbes		Porte		16
+clement		SDF		Chatelet		Ticket		13
+apo		Securite		Bir-Hakeim		Tourniquet		9
+flavio		Securite		Barbes		Ticket		2
+vic		Controleur		Chatelet		Ticket		5

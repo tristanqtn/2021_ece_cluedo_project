@@ -300,7 +300,7 @@ void Partie::creer_joueurs()
         do
         {
             std::cout << "****** JOUEURS DE LA PARTIE ******" << std::endl;
-            std::cout << "Voulez-vous recuperer un profil precedemment utlise ? [1 pour oui/0 pour non] : ";
+            std::cout << "Voulez-vous recuperer un profil precedemment utilise ? [1 pour oui/0 pour non] : ";
             std::cin >> ancien_profil;
         }
         while(ancien_profil>1 || ancien_profil<0);
@@ -464,14 +464,16 @@ void Partie::choix_pion()
 {
     system("CLS");
     std::cout << "****** CHOIX DES PIONS ******" << std::endl;
-    std::cout << std::endl << "Les couleurs disponibles sont : rouge, orange, jaune, vert, bleu, violet." << std::endl << "Il est impossible de prendre la même couleur de pion qu'un autre joueur !" << std::endl << std::endl;
+    std::cout << std::endl << "Les couleurs disponibles sont : rouge, orange, jaune, vert, bleu, violet." << std::endl << "Il est impossible de prendre la meme couleur de pion qu'un autre joueur !" << std::endl << std::endl;
 
     for(int i=0; i<m_nb_joueur; i++)
-    {//pour le nombre de joueur
+    {
+        //pour le nombre de joueur
         std::string pion;
         bool rendu_1 = true, rendu_2 = true;
         do
-        {// demande de saisie de la couleur du pion blindée
+        {
+            // demande de saisie de la couleur du pion blindée
             std::cout << m_joueurs[i].getPseudo() << " veuillez choisir votre pion : ";
             std::cin >> pion;
             rendu_1 = doublon_pion(pion); //verfi doublon
@@ -512,7 +514,8 @@ bool Partie::couleur_pion(std::string chaine)
     bool rendu = false;
 
     if(chaine == "rouge" || chaine == "orange" || chaine == "jaune" || chaine == "vert" || chaine == "bleu" || chaine == "violet")
-    {//test de l'ecriture
+    {
+        //test de l'ecriture
         rendu = true; // si correct rendre vrai
     }
 
@@ -594,7 +597,7 @@ std::vector <Carte_alibi> Partie::creer_deck_personnage()
     Carte_alibi controleur (true, false, false, "Controleur");
     Carte_alibi conducteur (true, false, false, "Conducteur");
     Carte_alibi agent_secu (true, false, false, "Securite");
-    Carte_alibi sdf (true, false, false, "SDF");
+    Carte_alibi sdf (true, false, false, "Colleur-affiches");
     Carte_alibi passager (true, false, false, "Passager");
     Carte_alibi musicien (true, false, false, "Musicien");
 
@@ -764,21 +767,14 @@ bool Partie::tour_joueur(int i, bool & exit)
         while(out == false && exit == false)
         {
             ///AFFICHAGE ALLEGRO
-            clear_bitmap(screen); //nettoyage de l'ecran
-            show_mouse(NULL); //suppression de la sourie
-            BITMAP * background = chargerImage("data/bitmap/plateau/background.bmp"); //cargerment du plateau
-            rectfill(screen, 0, 0, SCREEN_W, SCREEN_H, makecol(177, 177, 177)); //affichage du fond
-            stretch_sprite(screen, background, 0, 0, 950, 525); // affichage du plateau //(background, screen, 0, 0, background->w, background->h, 0, 0, 950, 525);
 
             Case_plateau case_du_joueur = m_board.get_case_plateau(m_joueurs[i].get_pos_x(), m_joueurs[i].get_pos_y()); //recuperation de la case actuelle du joueur
-            afficher_type(m_joueurs[i]); //affichage allegro de ses informations
+
 
             bool joueur_en_station = case_du_joueur.get_station();
             std::string nom_station = case_du_joueur.get_nom_station();
 
-
-            m_joueurs[i].afficher_main_allegro(); //affichage de la main du joueur
-            show_mouse(screen); //affichage de la souris
+            actualiser_allegro(i);
 
             choix = m_joueurs[i].jouer_tour(deplacement, joueur_en_station, nom_station); //recuperation du choix d'action du joueur et de son déplacement
 
@@ -817,18 +813,49 @@ bool Partie::tour_joueur(int i, bool & exit)
                 exit = Partie::pause();
 
             }
-            destroy_bitmap(background);//destruction de l'image de fond
+            if(choix == 1)
+            {
+                actualiser_allegro(i);
+            }
+
         }
 
     }
     else
-    {//le joueur est interdit de jouer, affichage d'un message
+    {
+        //le joueur est interdit de jouer, affichage d'un message
         system("CLS");
         std::cout << "Desole " << m_joueurs[i].getPseudo() << " tu ne peux toujours pas jouer !" << std::endl;
     }
     return sortie; //rendre vrai si victoire
 }
 /*********************************************************************************************************/
+
+void Partie::actualiser_allegro(int i)
+{
+    clear_bitmap(screen); //nettoyage de l'ecran
+    show_mouse(NULL); //suppression de la sourie
+
+    BITMAP * background = chargerImage("data/bitmap/plateau/background.bmp"); //cargerment du plateau
+    BITMAP * buffer_1 = creerBuffer(SCREEN_W, SCREEN_H, "buffer");
+
+    rectfill(screen, 0, 0, SCREEN_W, SCREEN_H, makecol(177, 177, 177)); //affichage du fond
+    rectfill(buffer_1, 0, 0, SCREEN_W, SCREEN_H, makecol(255, 0, 255));
+
+    stretch_sprite(screen, background, 0, 0, 950, 525); // affichage du plateau //(background, screen, 0, 0, background->w, background->h, 0, 0, 950, 525);
+
+    afficher_type(m_joueurs[i]); //affichage allegro de ses informations
+    m_board.affichage_joueur_allegro(m_joueurs, buffer_1);
+
+    stretch_sprite(screen, buffer_1, 0, 0, SCREEN_W, SCREEN_H);
+    m_joueurs[i].afficher_main_allegro(); //affichage de la main du joueur
+
+    show_mouse(screen); //affichage de la souris
+
+    destroy_bitmap(buffer_1);
+    destroy_bitmap(background);
+}
+
 
 
 /**< MENU PAUSE >*****************************************************************************************/
@@ -923,7 +950,8 @@ void Partie::lancer_partie ()
                 sortie = tour_joueur(i, out); //tour du joueur
 
                 if(sortie == true)
-                {//en cas de victoire
+                {
+                    //en cas de victoire
                     //incrementation du nombre de victoire du gagnant
                     int temp = m_joueurs[i].getNbVictoire();
                     m_joueurs[i].setNbVictoire((temp +1));
@@ -941,7 +969,8 @@ void Partie::lancer_partie ()
 
                 }
                 if(out == true)
-                {//quitter le jeu sans victoire
+                {
+                    //quitter le jeu sans victoire
                     i = 100;
                     sortie = true;
                 }

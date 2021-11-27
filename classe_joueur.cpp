@@ -506,7 +506,7 @@ bool Participant::verification_hypothese_lieu(std::string chaine)
 bool Participant::verification_hypothese_perso(std::string chaine)
 {
     //si la chaine de caractere reçue est égale à la descrption d'une carte alibi on rend vrai sinon faux
-    if(chaine == "Controleur" || chaine == "Conducteur" || chaine == "Passager" || chaine == "SDF" || chaine == "Musicien" || chaine == "Securite")
+    if(chaine == "Controleur" || chaine == "Conducteur" || chaine == "Passager" || chaine == "Colleur-affiches" || chaine == "Musicien" || chaine == "Securite")
     {
         return true;
     }

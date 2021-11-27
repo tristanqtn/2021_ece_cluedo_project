@@ -99,6 +99,8 @@ class Partie
 
         Partie * get_pointeur();
 
+        void actualiser_allegro(int i);
+
         //setters
         void set_nb_IA(int valeur);
         void set_nb_joueur (int valeur);
@@ -111,18 +113,18 @@ class Partie
         void parametrer(); //recuperation des parametres (nb joueurs, nb IA, ...)
         void creer_joueurs(); //création des objets joueurs
         void creer_IA(); //création des objets IA
+        void choix_pion(); //choix des pions
         void distribuer(); //distribution des cartes
+        void initialisation(); //setup des elements de jeu
         void lancer_partie (); //boucle de jeu
 
         void sauvegarde_partie();
-        void initialisation();
         void recuperation_tot_partie();
-        void historique_victoire(int nb_sauv);
-        void sauvegarde_victoire(std::string pseudo, std::string personnage, std::string lieu, std::string arme, int tour);
+
         int nombre_victoire();
         void incrementation_victoire();
-        void choix_pion();
-
+        void historique_victoire(int nb_sauv);
+        void sauvegarde_victoire(std::string pseudo, std::string personnage, std::string lieu, std::string arme, int tour);
 };
 /*********************************************************************************************************/
 
