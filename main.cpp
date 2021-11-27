@@ -9,12 +9,16 @@
 /*********************************************************************************************************/
 int main()
 {
+    //initialisation
     srand(time(NULL));
     setupAllegro();
-    Cluedo jeu;
 
+    //lancement du jeu
+    Cluedo jeu;
     jeu.lancer_jeu();
 
+    //sortie du jeu
+    allegro_exit();
     return 0;
 
 }END_OF_MAIN();

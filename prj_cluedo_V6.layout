@@ -2,100 +2,100 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="header_principal.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
+	<File name="header_plateau.h" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1052" topLine="9" />
+			<Cursor1 position="1704" topLine="10" />
 		</Cursor>
 	</File>
-	<File name="header_plateau.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+	<File name="header_meurtrier.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1815" topLine="9" />
+			<Cursor1 position="1483" topLine="9" />
 		</Cursor>
 	</File>
-	<File name="header_cluedo.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="class_plateau.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="395" topLine="0" />
+			<Cursor1 position="16704" topLine="586" />
 		</Cursor>
 	</File>
-	<File name="classe_joueur.cpp" open="1" top="1" tabpos="4" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+	<File name="fonction_allegro.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2030" topLine="34" />
+			<Cursor1 position="5640" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="classe_carte.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="classe_joueur.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1280" topLine="28" />
+			<Cursor1 position="24946" topLine="439" />
 		</Cursor>
 	</File>
-	<File name="class_plateau.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
+	<File name="header_chance.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="8" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="20925" topLine="713" />
+			<Cursor1 position="1288" topLine="3" />
 		</Cursor>
 	</File>
-	<File name="header_chance.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="10" zoom_2="0">
+	<File name="header_case.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1288" topLine="15" />
+			<Cursor1 position="2190" topLine="43" />
 		</Cursor>
 	</File>
-	<File name="header_joueur.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
+	<File name="header_carte.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3388" topLine="82" />
+			<Cursor1 position="968" topLine="24" />
 		</Cursor>
 	</File>
-	<File name="classe_chance.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="6" zoom_2="0">
+	<File name="header_cluedo.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2443" topLine="16" />
+			<Cursor1 position="952" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="classe_case.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3807" topLine="147" />
+		</Cursor>
+	</File>
+	<File name="header_joueur.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2994" topLine="49" />
+		</Cursor>
+	</File>
+	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="6" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="517" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="classe_partie.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="18472" topLine="404" />
+			<Cursor1 position="41915" topLine="1205" />
 		</Cursor>
 	</File>
-	<File name="main.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="6" zoom_2="0">
+	<File name="header_principal.h" open="1" top="1" tabpos="12" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="320" topLine="0" />
+			<Cursor1 position="1052" topLine="18" />
 		</Cursor>
 	</File>
-	<File name="classe_cluedo.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
+	<File name="classe_carte.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2794" topLine="69" />
+			<Cursor1 position="970" topLine="47" />
 		</Cursor>
 	</File>
-	<File name="header_partie.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="6" zoom_2="0">
+	<File name="classe_chance.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3764" topLine="0" />
+			<Cursor1 position="1896" topLine="31" />
 		</Cursor>
 	</File>
-	<File name="header_meurtrier.h" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="classe_meurtrier.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1183" topLine="6" />
+			<Cursor1 position="4426" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="header_case.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
+	<File name="classe_cluedo.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1867" topLine="29" />
+			<Cursor1 position="625" topLine="10" />
 		</Cursor>
 	</File>
-	<File name="classe_meurtrier.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="8" zoom_2="0">
+	<File name="header_partie.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1878" topLine="42" />
+			<Cursor1 position="4170" topLine="96" />
 		</Cursor>
 	</File>
-	<File name="fonction_allegro.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="6647" topLine="162" />
-		</Cursor>
-	</File>
-	<File name="header_carte.h" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="448" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="classe_case.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3744" topLine="137" />
-		</Cursor>
-	</File>
-	<EditorTabsLayout layout="0862d590619f9ca400012c8b00000002=0;prj_cluedo_V6:header_partie.h,1;prj_cluedo_V6:classe_partie.cpp,2;prj_cluedo_V6:classe_cluedo.cpp,*3;prj_cluedo_V6:classe_joueur.cpp,4;prj_cluedo_V6:classe_meurtrier.cpp,5;prj_cluedo_V6:class_plateau.cpp,6;prj_cluedo_V6:header_plateau.h,7;prj_cluedo_V6:fonction_allegro.cpp,8;prj_cluedo_V6:header_principal.h@layout2|name=dummy;caption=;state=2098174;dir=3;layer=0;row=0;pos=0;prop=100000;bestw=825;besth=361;minw=825;minh=361;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=0862d590619f9ca400012c8b00000002;caption=;state=2098172;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=200;besth=200;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|dock_size(5,0,0)=202|" />
+	<EditorTabsLayout layout="14c9e2f061a20efb0033e6fa00000002=0;prj_cluedo_V6:main.cpp,1;prj_cluedo_V6:classe_partie.cpp,2;prj_cluedo_V6:classe_cluedo.cpp,3;prj_cluedo_V6:header_carte.h,4;prj_cluedo_V6:header_case.h,5;prj_cluedo_V6:header_chance.h,6;prj_cluedo_V6:header_cluedo.h,7;prj_cluedo_V6:header_joueur.h,8;prj_cluedo_V6:header_meurtrier.h,9;prj_cluedo_V6:header_partie.h,10;prj_cluedo_V6:header_plateau.h,*11;prj_cluedo_V6:header_principal.h@layout2|name=dummy;caption=;state=2098174;dir=3;layer=0;row=0;pos=0;prop=100000;bestw=825;besth=361;minw=825;minh=361;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=14c9e2f061a20efb0033e6fa00000002;caption=;state=2098172;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=200;besth=200;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|dock_size(5,0,0)=202|" />
 </CodeBlocks_layout_file>

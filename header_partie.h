@@ -30,6 +30,8 @@ class Partie
 
         Plateau m_board;
 
+        int m_tour;
+
         ///fonctions privées, seulement utile au sein de la classe
         std::vector <Carte_alibi> creer_deck_lieux();
         std::vector <Carte_alibi> creer_deck_armes();
@@ -43,28 +45,39 @@ class Partie
         void tour_IA(int i);
 
         //tour d'un joueur
-        bool tour_joueur(int i);
+        bool tour_joueur(int i, bool & exit);
 
         //méthodes d'accusation ou d'hypothèses
         void hypothese_finale(int i, std::string nom_station);
         bool accusation_finale(int i);
 
-         void sauvegarder_joueurs();
+        void sauvegarder_joueurs();
         void recuperation_joueur();
-        void sauvegarde_meurtrier();
-
-        void sauvegarde_config();
-        void recup_config();
         void recuperation_joueurs();
-        void recuperation_meurtrier();
         Joueur recuperation();
+
+        void sauvegarde_meurtrier();
+        void recuperation_meurtrier();
+
+        void recup_config();
+        void sauvegarde_config();
+
+        bool doublon_pion(std::string chaine);
+        bool couleur_pion(std::string chaine);
+
+        void afficher_type(Participant& a);
+        bool pause();
+
+        //affichage
+        void afficher_deck() const; //seulement utile pour verification de la bonne création des cartes, ne pas utiliser dans le jeu
+        void afficher_meurtrier() const; //affichage des cartes alibis composants le meurtre
 
 
     public :
 
         ///constructeurs
         Partie(); //defaut
-        Partie(Meurtrier _meurtrier, std::vector <Carte_alibi> _deck_cartes, std::vector <Joueur> _joueurs, std::vector <IA> _IA, Plateau _board); //surchargé
+        Partie(Meurtrier _meurtrier, std::vector <Carte_alibi> _deck_cartes, std::vector <Joueur> _joueurs, std::vector <IA> _IA, Plateau _board, int _tour); //surchargé
 
         ///destructeur
         ~Partie();
@@ -74,6 +87,7 @@ class Partie
         int get_nb_IA() const;
         int get_nb_joueurs() const;
         int get_nb_tot_joueur() const;
+        int get_nb_tour() const;
 
         std::vector <IA> get_IA() const;
         std::vector <Joueur> get_joueurs() const;
@@ -89,11 +103,8 @@ class Partie
         void set_nb_IA(int valeur);
         void set_nb_joueur (int valeur);
         void set_meurtrier (Meurtrier tueur);
+        void set_nb_tour(int valeur);
         void set_deck (std::vector <Carte_alibi> deck);
-
-        //affichage
-        void afficher_deck() const; //seulement utile pour verification de la bonne création des cartes, ne pas utiliser dans le jeu
-        void afficher_meurtrier() const; //affichage des cartes alibis composants le meurtre
 
         //fonctionnement de la partie
         void creer_partie(); //création de la pioche + plateau
@@ -109,6 +120,8 @@ class Partie
         void historique_victoire(int nb_sauv);
         void sauvegarde_victoire(std::string pseudo, std::string personnage, std::string lieu, std::string arme, int tour);
         int nombre_victoire();
+        void incrementation_victoire();
+        void choix_pion();
 
 };
 /*********************************************************************************************************/

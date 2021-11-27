@@ -14,6 +14,7 @@ class Case_plateau
 
     private :
 
+        ///variables privées
         bool m_occupee;
         bool m_chance;
         bool m_station;
@@ -30,11 +31,14 @@ class Case_plateau
 
     public :
 
+        ///constructeur
         Case_plateau();
         Case_plateau(bool _occupee, bool _chance, bool _sortie_haut, bool _sortie_bas, bool _sortie_gauche, bool _sortie_droite, std::string _nom_station, std::vector <Carte_chance> _deck_chance, Joueur * _occupant);
 
+        ///destructeur
         ~Case_plateau();
 
+        ///getters et setters
         bool get_occupee() const;
         bool get_chance() const;
         bool get_station() const;
@@ -57,6 +61,7 @@ class Case_plateau
 
         Joueur * get_occupant() const;
 
+        ///cartes chances
         void generer_carte();
         void afficher_deck_chance();
 };

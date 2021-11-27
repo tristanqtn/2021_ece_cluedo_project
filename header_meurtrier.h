@@ -37,6 +37,10 @@ class Meurtrier
         bool verification_victoire(Meurtrier hypothese); //comparaison d'une hypthèse avec le crime
         bool verification_carte(Carte_alibi test); //verification egalite entre deux cartes
 
+        std::string get_arme();
+        std::string get_lieu();
+        std::string get_perso();
+
 };
 /*********************************************************************************************************/
 

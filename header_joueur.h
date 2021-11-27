@@ -37,7 +37,7 @@ class Participant
         Participant();
         Participant(std::string _pseudo, std::vector <Carte_alibi> _main, bool _IA);
 
-        ~Participant();
+        virtual ~Participant();
 
         //getters
         bool get_IA() const;
@@ -57,6 +57,8 @@ class Participant
 
         //initialisation
         void recevoir_carte(Carte_alibi nouvelle_carte); //permet de recevoir dans la main du joueur un carte alibi
+
+        virtual void qui_je_suis();
 };
 /*********************************************************************************************************/
 
@@ -78,20 +80,20 @@ class Joueur : public Participant
         int m_pos_x;
         int m_pos_y;
 
+        std::string m_pion;
 
 
     public:
 
         ///constructeurs
         Joueur(); //defaut
-        Joueur(std::string _pseudo, int _nb_partie, int _nb_victoire, std::string _grade, std::vector <Carte_alibi> _main, bool _IA, bool _piece, bool _autorisation_jeu, int _x, int _y);//surchagé
+        Joueur(std::string _pseudo, int _nb_partie, int _nb_victoire, std::string _grade, std::vector <Carte_alibi> _main, bool _IA, bool _piece, bool _autorisation_jeu, int _x, int _y, std::string _pion);//surchagé
 
         ///destructeur
         ~Joueur();
 
         ///methodes
         //sauvegarde
-        void lecture_sauvegarde(std::string location);
         void sauvegarde_joueur_in_game(std::ofstream& fichier);
         void sauvegarde_joueur();
 
@@ -102,11 +104,11 @@ class Joueur : public Participant
         int getNbVictoire() const;
 
         std::string getGrade() const;
-
+        std::string get_pion() const;
         //setters
         void setNbPartie(int nbPartie);
         void setNbVictoire(int nbVictoire);
-
+        void set_pion(std::string pion);
         void setGrade(std::string grade);
         void set_autorisation_jeu(bool valeur);
 
@@ -127,6 +129,8 @@ class Joueur : public Participant
 
         //pointeur
         Joueur * get_pointer(); //rend un pointeur sur le joueur
+
+        virtual void qui_je_suis();//POLYMORPHISME
 };
 /*********************************************************************************************************/
 
@@ -141,6 +145,8 @@ class IA : public Participant
         IA(std::string _pseudo, std::vector <Carte_alibi> _main, bool _IA);
 
         ~IA();
+
+         virtual void qui_je_suis();//POLYMORPHISME
 };
 /*********************************************************************************************************/
 

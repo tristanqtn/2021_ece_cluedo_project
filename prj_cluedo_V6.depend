@@ -202,22 +202,22 @@
 	"header_plateau.h"
 	"header_joueur.h"
 
-1637853345 source:c:\users\trist\onedrive\bureau\copie_travail\class_plateau.cpp
+1638008884 source:c:\users\trist\onedrive\bureau\copie_travail\class_plateau.cpp
 	"header_plateau.h"
 	"header_joueur.h"
 	"header_carte.h"
 	"header_chance.h"
 	"header_principal.h"
 
-1637851209 c:\users\trist\onedrive\bureau\copie_travail\header_plateau.h
+1637968085 c:\users\trist\onedrive\bureau\copie_travail\header_plateau.h
 	"header_case.h"
 	"header_chance.h"
 
-1636365740 c:\users\trist\onedrive\bureau\copie_travail\header_case.h
+1638011536 c:\users\trist\onedrive\bureau\copie_travail\header_case.h
 	"header_joueur.h"
 	"header_chance.h"
 
-1637753842 c:\users\trist\onedrive\bureau\copie_travail\header_joueur.h
+1638011601 c:\users\trist\onedrive\bureau\copie_travail\header_joueur.h
 	"header_carte.h"
 	"header_meurtrier.h"
 
@@ -236,13 +236,13 @@
 	<unistd.h>
 	<ctype.h>
 
-1637672354 c:\users\trist\onedrive\bureau\copie_travail\header_meurtrier.h
+1637856770 c:\users\trist\onedrive\bureau\copie_travail\header_meurtrier.h
 	"header_carte.h"
 
 1636129835 c:\users\trist\onedrive\bureau\copie_travail\header_chance.h
 	"header_carte.h"
 
-1637077615 source:c:\users\trist\onedrive\bureau\copie_travail\classe_carte.cpp
+1638009097 source:c:\users\trist\onedrive\bureau\copie_travail\classe_carte.cpp
 	"header_case.h"
 	"header_carte.h"
 	"header_joueur.h"
@@ -250,7 +250,7 @@
 	"header_meurtrier.h"
 	"header_principal.h"
 
-1637791569 c:\users\trist\onedrive\bureau\copie_travail\header_partie.h
+1637974260 c:\users\trist\onedrive\bureau\copie_travail\header_partie.h
 	"header_case.h"
 	"header_carte.h"
 	"header_joueur.h"
@@ -267,21 +267,22 @@
 	"header_partie.h"
 	"header_meurtrier.h"
 
-1636365742 source:c:\users\trist\onedrive\bureau\copie_travail\classe_case.cpp
+1638009326 source:c:\users\trist\onedrive\bureau\copie_travail\classe_case.cpp
 	"header_case.h"
 	"header_chance.h"
 
-1636130291 source:c:\users\trist\onedrive\bureau\copie_travail\classe_chance.cpp
+1638009346 source:c:\users\trist\onedrive\bureau\copie_travail\classe_chance.cpp
 	"header_chance.h"
 	"header_case.h"
 
-1637789538 source:c:\users\trist\onedrive\bureau\copie_travail\classe_cluedo.cpp
+1637973676 source:c:\users\trist\onedrive\bureau\copie_travail\classe_cluedo.cpp
 	"header_cluedo.h"
+	"header_principal.h"
 
-1635872635 c:\users\trist\onedrive\bureau\copie_travail\header_cluedo.h
+1638011601 c:\users\trist\onedrive\bureau\copie_travail\header_cluedo.h
 	"header_partie.h"
 
-1637851209 source:c:\users\trist\onedrive\bureau\copie_travail\classe_meurtrier.cpp
+1638010445 source:c:\users\trist\onedrive\bureau\copie_travail\classe_meurtrier.cpp
 	"header_case.h"
 	"header_carte.h"
 	"header_joueur.h"
@@ -289,7 +290,7 @@
 	"header_meurtrier.h"
 	"header_principal.h"
 
-1637850975 source:c:\users\trist\onedrive\bureau\copie_travail\classe_partie.cpp
+1638011465 source:c:\users\trist\onedrive\bureau\copie_travail\classe_partie.cpp
 	"header_case.h"
 	"header_carte.h"
 	"header_joueur.h"
@@ -297,10 +298,10 @@
 	"header_meurtrier.h"
 	"header_principal.h"
 
-1637853271 source:c:\users\trist\onedrive\bureau\copie_travail\fonction_allegro.cpp
+1638010605 source:c:\users\trist\onedrive\bureau\copie_travail\fonction_allegro.cpp
 	"header_principal.h"
 
-1636992381 source:c:\users\trist\onedrive\bureau\copie_travail\main.cpp
+1638010639 source:c:\users\trist\onedrive\bureau\copie_travail\main.cpp
 	"header_case.h"
 	"header_carte.h"
 	"header_cluedo.h"
@@ -309,7 +310,7 @@
 	"header_meurtrier.h"
 	"header_principal.h"
 
-1637790366 source:c:\users\trist\onedrive\bureau\copie_travail\classe_joueur.cpp
+1638010240 source:c:\users\trist\onedrive\bureau\copie_travail\classe_joueur.cpp
 	"header_case.h"
 	"header_carte.h"
 	"header_joueur.h"

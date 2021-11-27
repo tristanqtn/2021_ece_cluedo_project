@@ -33,15 +33,10 @@ class Plateau
 
         //getter et setter
         Case_plateau get_case_plateau(int i, int j) const;     //getter d'une case
-        void set_plateau(Case_plateau _plateau[15][15]);
+        //void set_plateau(Case_plateau _plateau[15][15]);
+        bool verif_presence_joueur(int i, int j, std::vector < Joueur> vecteur_joueurs);
 };
 /************************************************************************/
-
-
-/**< PROTOTYPES>*********************************************************/
-/************************************************************************/
-
-
 
 
 #endif // HEADER_PLATEAU_H_INCLUDED

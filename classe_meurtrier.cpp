@@ -35,17 +35,17 @@ void Meurtrier::afficher_meurtrier() const
 /*********************************************************************************************************/
 
 
-
+/**< VERIFICATION DE L'EXCATITUDE D'UNE ACCUSATION AVEC LE MEURTRE COMMIS >*******************************/
 bool Meurtrier::verification_victoire(Meurtrier hypothese)
 {
     int i = 0;
-    if(Meurtrier::m_carte_arme.verification_egalite(hypothese.m_carte_arme) == true)
+    if(Meurtrier::m_carte_arme.verification_egalite(hypothese.m_carte_arme) == true)//arme
         i++;
 
-    if(Meurtrier::m_carte_lieu.verification_egalite(hypothese.m_carte_lieu) == true)
+    if(Meurtrier::m_carte_lieu.verification_egalite(hypothese.m_carte_lieu) == true)//lieu
         i++;
 
-    if(Meurtrier::m_carte_personnage.verification_egalite(hypothese.m_carte_personnage) == true)
+    if(Meurtrier::m_carte_personnage.verification_egalite(hypothese.m_carte_personnage) == true)//perso
        i++;
 
     if(i==3)
@@ -53,7 +53,10 @@ bool Meurtrier::verification_victoire(Meurtrier hypothese)
     else
         return false;
 }
+/*********************************************************************************************************/
 
+
+/**< VERIFICATION DE L'EGALITE DE 2 CARTES >**************************************************************/
 bool Meurtrier::verification_carte(Carte_alibi test)
 {
     bool resultat = false;
@@ -73,18 +76,42 @@ bool Meurtrier::verification_carte(Carte_alibi test)
 
     return resultat;
 }
+/*********************************************************************************************************/
 
+
+/**< GETTERS >********************************************************************************************/
+std::string Meurtrier::get_arme()
+{
+    return  m_carte_arme.get_caracteristique();
+}
+
+std::string Meurtrier::get_lieu()
+{
+   return  m_carte_lieu.get_caracteristique();
+}
+
+std::string Meurtrier::get_perso()
+{
+
+   return  m_carte_personnage.get_caracteristique();
+}
+/*********************************************************************************************************/
+
+
+/**< SAUVEGARDE DES INFORMATIONS DU MEURTRIER >***********************************************************/
 void Meurtrier::sauvegarde()
 {
     std::ofstream fichier;
 
-    fichier.open("data/saves/game/meurtrier.txt");
+    fichier.open("data/saves/game/meurtrier.txt"); //ouverture du fichier
 
     if(fichier.is_open())
-    {
+    {// si fichier ouvert
+        //sauvegarde des infos du crime
         fichier << Meurtrier::m_carte_arme.get_arme() << "\t\t" << Meurtrier::m_carte_arme.get_lieu() << "\t\t" << Meurtrier::m_carte_arme.get_personnage() << "\t\t" << Meurtrier::m_carte_arme.get_caracteristique() << "\n";
         fichier << Meurtrier::m_carte_lieu.get_arme() << "\t\t" << Meurtrier::m_carte_lieu.get_lieu() << "\t\t" << Meurtrier::m_carte_lieu.get_personnage() << "\t\t" << Meurtrier::m_carte_lieu.get_caracteristique() << "\n";
         fichier << Meurtrier::m_carte_personnage.get_arme() << "\t\t" << Meurtrier::m_carte_personnage.get_lieu() << "\t\t" << Meurtrier::m_carte_personnage.get_personnage() << "\t\t" << Meurtrier::m_carte_personnage.get_caracteristique() << "\n";
-        fichier.close();
+        fichier.close();//fermeture du fichier
     }
 }
+/*********************************************************************************************************/
