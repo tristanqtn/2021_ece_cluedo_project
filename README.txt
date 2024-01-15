@@ -1,60 +1,35 @@
-________/\\\\\\\\\__/\\\______________/\\\________/\\\__/\\\\\\\\\\\\\\\__/\\\\\\\\\\\\__________/\\\\\______        
- _____/\\\////////__\/\\\_____________\/\\\_______\/\\\_\/\\\///////////__\/\\\////////\\\______/\\\///\\\____       
-  ___/\\\/___________\/\\\_____________\/\\\_______\/\\\_\/\\\_____________\/\\\______\//\\\___/\\\/__\///\\\__      
-   __/\\\_____________\/\\\_____________\/\\\_______\/\\\_\/\\\\\\\\\\\_____\/\\\_______\/\\\__/\\\______\//\\\_     
-    _\/\\\_____________\/\\\_____________\/\\\_______\/\\\_\/\\\///////______\/\\\_______\/\\\_\/\\\_______\/\\\_    
-     _\//\\\____________\/\\\_____________\/\\\_______\/\\\_\/\\\_____________\/\\\_______\/\\\_\//\\\______/\\\__   
-      __\///\\\__________\/\\\_____________\//\\\______/\\\__\/\\\_____________\/\\\_______/\\\___\///\\\__/\\\____  
-       ____\////\\\\\\\\\_\/\\\\\\\\\\\\\\\__\///\\\\\\\\\/___\/\\\\\\\\\\\\\\\_\/\\\\\\\\\\\\/______\///\\\\\/_____ 
-        _______\/////////__\///////////////_____\/////////_____\///////////////__\////////////__________\/////_______
- ______________/\\\\\\\\\_________/\\\\\\\\\_____/\\\\\\\\\\\\\\\__/\\\\\\\\\\\\\___                                 
-  ____________/\\\///////\\\_____/\\\\\\\\\\\\\__\///////\\\/////__\/\\\/////////\\\_                                
-   ___________\/\\\_____\/\\\____/\\\/////////\\\_______\/\\\_______\/\\\_______\/\\\_                               
-    ___________\/\\\\\\\\\\\/____\/\\\_______\/\\\_______\/\\\_______\/\\\\\\\\\\\\\/__                              
-     ___________\/\\\//////\\\____\/\\\\\\\\\\\\\\\_______\/\\\_______\/\\\/////////____                             
-      ___________\/\\\____\//\\\___\/\\\/////////\\\_______\/\\\_______\/\\\_____________                            
-       ___________\/\\\_____\//\\\__\/\\\_______\/\\\_______\/\\\_______\/\\\_____________                           
-        ___________\/\\\______\//\\\_\/\\\_______\/\\\_______\/\\\_______\/\\\_____________                          
-         ___________\///________\///__\///________\///________\///________\///______________  
+# Cluedo Parisian Metro
 
+## Overview
 
+Welcome to the Cluedo game with a twist—set in the Parisian metro! Developed by Victor RATTI and Tristan QUERTON, second-year students at ECE Paris, as part of the S3 - Conception et programmation project.
 
+## Features
 
+- C++ / Allegro game
+- Explore the Parisian metro in a unique Cluedo experience
+- Developed in the context of the Conception et programmation course
 
-__________________________________________________________________________________________________________________________
+## Developers
 
-Developpeurs : Victor RATTI et Tristan QUERTON (étudiant en 2ème année à ECE - Paris)
-Date : novembre 2021
-Cadre : Projet d'informatique S3 - Conception et programmation
-Langage : C++ / Allegro
-__________________________________________________________________________________________________________________________
+- Victor RATTI
+- Tristan QUERTON
 
+## Date
 
+November 2021
 
+## Usage
 
-__________________________________________________________________________________________________________________________
+1. Compile the program using a C++ compiler.
+2. Run the compiled executable to experience the Cluedo game set in the Parisian metro.
 
-Sources : 
+## Sources
 
-Cours de conception et C++ : Mr Diedler : https://pedago-ece.campusonline.me/course/view.php?id=5896
-Cours Allegro : Mme Rendler : https://pedago-ece.campusonline.me/course/view.php?id=5460
-Cours C/C++/Allegro : Mr Fercocq : https://fercoq.bitbucket.io/cpp/index.html
+- [C++ and Conception Course by Mr. Diedler](https://pedago-ece.campusonline.me/course/view.php?id=5896)
+- [Allegro Course by Ms. Rendler](https://pedago-ece.campusonline.me/course/view.php?id=5460)
+- [C/C++/Allegro Course by Mr. Fercocq](https://fercoq.bitbucket.io/cpp/index.html)
+- [Allegro 4-5 Reference](https://www.allegro.cc/manual/5/)
+- [C++ Reference](https://www.cplusplus.com/)
 
-Site reference Allegro 4-5 : https://www.allegro.cc/manual/5/
-Site reference C++ : https://www.cplusplus.com/
-__________________________________________________________________________________________________________________________
-
-
-
-_________________________________________________________________________________________________________________________
-
-A l'attention des professeurs : 
-
-Certains des sous programmes utilisés pour les affichages ALLEGRO sont issus du projet de l'année dernier : SABOTEUR, réalisé avec Apolline PETIT
-D'un accord commun nous nous sommes autorisé d'utiliser ces programmes.
-Ils ne sont en aucun cas le résultat d'un plagiat entre nos 2 groupes.
-
-Voici la liste de ces sous programmes : BITMAP * chargerImage(const char * filename) / BITMAP * creerBuffer(int largeur, int hauteur, const char * filename) / void afficherCoord() / void sortieErreur(const char * phrase)
-
-_________________________________________________________________________________________________________________________
-
+Happy sleuthing in the Parisian metro! 🚇🔍
